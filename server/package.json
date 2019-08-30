@@ -1,51 +1,59 @@
 {
-  "name": "server",
-  "version": "1.0.0",
-  "description": "",
-  "main": "./src/server.js",
-  "scripts": {
-    "start": "node server.js",
-    "test": "\"./node_modules/mocha/bin/mocha\" --require @babel/register --timeout 5000 --exit \"./src/tests/basic.test.js\"",
-    "clean": "rm -rf build && mkdir build",
-    "build-babel": "babel ./src -d build",
-    "build": "npm run clean && npm run build-babel",
-    "dev": "nodemon -L ./src/server.js --exec babel-node"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/chas-academy/u11-fullstack-js-ChristianBlom84"
-  },
-  "keywords": [],
-  "author": "Christian Blom",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/chas-academy/u11-fullstack-js-ChristianBlom84/issues"
-  },
-  "homepage": "https://github.com/chas-academy/u11-fullstack-js-ChristianBlom84#readme",
-  "dependencies": {
-    "@babel/register": "^7.4.0",
-    "bcryptjs": "^2.4.3",
-    "dotenv": "^8.1.0",
-    "express": "^4.16.4",
-    "express-validator": "^5.3.1",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.5.5",
-    "request": "^2.88.0"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.4.0",
-    "@babel/node": "^7.2.2",
-    "@babel/plugin-proposal-class-properties": "^7.4.0",
-    "@babel/plugin-transform-arrow-functions": "^7.2.0",
-    "@babel/preset-env": "^7.4.2",
-    "chai": "^4.2.0",
-    "concurrently": "^4.1.0",
-    "mocha": "^6.1.4",
-    "nodemon": "^1.19.0",
-    "should": "^13.2.3",
-    "should-http": "^0.1.1",
-    "sinon": "^7.3.2",
-    "supertest": "^4.0.2"
-  }
+	"name": "just-lift-server",
+	"version": "1.0.0",
+	"description": "",
+	"main": "./src/server.js",
+	"scripts": {
+		"start": "node server.js",
+		"test": "\"./node_modules/mocha/bin/mocha\" --require @babel/register --timeout 5000 --exit \"./src/tests/basic.test.js\"",
+		"clean": "rm -rf build && mkdir build",
+		"build-babel": "babel ./src -d build",
+		"build": "npm run clean && npm run build-babel",
+		"dev": "nodemon -L ./src/server.js --exec babel-node"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/chas-academy/u11-fullstack-js-ChristianBlom84"
+	},
+	"keywords": [],
+	"author": "Christian Blom",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/chas-academy/u11-fullstack-js-ChristianBlom84/issues"
+	},
+	"homepage": "https://github.com/chas-academy/u11-fullstack-js-ChristianBlom84#readme",
+	"dependencies": {
+		"@babel/register": "^7.5.5",
+		"bcryptjs": "^2.4.3",
+		"dotenv": "^8.1.0",
+		"express": "^4.17.1",
+		"express-validator": "^5.3.1",
+		"jsonwebtoken": "^8.5.1",
+		"mongoose": "^5.6.11",
+		"request": "^2.88.0"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.5.5",
+		"@babel/core": "^7.5.5",
+		"@babel/node": "^7.5.5",
+		"@babel/plugin-proposal-class-properties": "^7.5.5",
+		"@babel/plugin-transform-arrow-functions": "^7.2.0",
+		"@babel/preset-env": "^7.5.5",
+		"chai": "^4.2.0",
+		"concurrently": "^4.1.2",
+		"eslint": "^6.3.0",
+		"eslint-config-airbnb-base": "^14.0.0",
+		"eslint-config-prettier": "^6.1.0",
+		"eslint-plugin-import": "^2.18.2",
+		"eslint-plugin-jsx-a11y": "^6.2.3",
+		"eslint-plugin-prettier": "^3.1.0",
+		"eslint-plugin-promise": "^4.2.1",
+		"eslint-plugin-react": "^7.14.3",
+		"mocha": "^6.2.0",
+		"nodemon": "^1.19.1",
+		"should": "^13.2.3",
+		"should-http": "^0.1.1",
+		"sinon": "^7.4.1",
+		"supertest": "^4.0.2"
+	}
 }
