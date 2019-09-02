@@ -1,5 +1,5 @@
 const express = require('express');
-const config = require('dotenv').config({ path: "./deploy/.env" });
+const config = require('dotenv').config({ path: './deploy/.env' });
 
 const connectDB = require('./config/db');
 
@@ -7,14 +7,14 @@ const app = express();
 
 // Connect Database
 (async () => {
-  try {
-    console.log("Connecting to DB");
-    await connectDB();
-  } catch (error) {
-    console.log("MongoDB connection error");
-    console.error(error);
-    setTimeout(connectDB(), 5000);
-  }
+	try {
+		console.log('Connecting to DB');
+		await connectDB();
+	} catch (error) {
+		console.log('MongoDB connection error');
+		console.error(error);
+		setTimeout(connectDB(), 5000);
+	}
 })();
 
 // Init Middleware
