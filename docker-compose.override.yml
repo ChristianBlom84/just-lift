@@ -5,17 +5,15 @@ services:
     build:
       context: ./server
       dockerfile: ./deploy/Dockerfile-dev
-    command: npm run dev
     volumes:
       - ./server:/usr/app/
-      - ./server/node_modules:/usr/app/node_modules
+    entrypoint: /usr/app/entrypoint.sh
   u11_react_client:
-    command: npm run start
     volumes:
       - ./client:/usr/app/
-      - ./client/node_modules:/usr/app/node_modules
     environment:
       - CHOKIDAR_USEPOLLING=true
+    entrypoint: /usr/app/entrypoint.sh
   adminmongo:
     environment:
       - HOST=0.0.0.0

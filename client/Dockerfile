@@ -1,13 +1,20 @@
 FROM mhart/alpine-node:latest
 
-ADD package.json /package.json
+# Create and define the node_modules's cache directory.
+RUN mkdir /usr/cache
+WORKDIR /usr/cache
+
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm install
 
 ENV NODE_PATH=/node_modules
 ENV PATH=$PATH:/node_modules/.bin
 
+RUN mkdir /usr/app
 WORKDIR /usr/app
-COPY . /usr/app
 
-RUN npm install --silent
+COPY entrypoint.sh ./
+RUN chmod +x /usr/app/entrypoint.sh
 
-CMD ["npm", "start"]
+RUN apk add --no-cache bash
