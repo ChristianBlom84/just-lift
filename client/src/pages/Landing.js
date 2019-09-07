@@ -12,10 +12,10 @@ export default function Landing() {
 			</div>
 			<div className="buttons-landing">
 				<Link to="/login">
-					<button className="btn btn-main" type="button">LOGIN</button>
+					<button className="btn btn-primary" type="button">LOGIN</button>
 				</Link>
 				<Link to="/register">
-					<button className="btn btn-main" type="button">REGISTER</button>
+					<button className="btn btn-primary" type="button">REGISTER</button>
 				</Link>
 			</div>
 		</main>
