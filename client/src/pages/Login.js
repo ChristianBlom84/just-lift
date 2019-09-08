@@ -17,9 +17,9 @@ export default function Login() {
 	}
 
 	return (
-		<main className="general-main login">
+		<main className="general-main login-register">
 			<h2 className="center-text">Please sign in below</h2>
-			<form className="login-form" onSubmit={(e) => onSubmit(e)}>
+			<form className="login-register-form" onSubmit={(e) => onSubmit(e)}>
 				<input
 					className="mb-4"
 					type="email"
