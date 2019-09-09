@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 export default function Login() {
 	const [formData, setFormData] = useState({
@@ -13,11 +13,12 @@ export default function Login() {
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
-		console.log("Logged in!");
+		console.log("Logged in!", e.currentTarget);
+		return <Redirect to='/dashboard' />;
 	}
 
 	return (
-		<main className="general-main login-register">
+		<main className="general-main justify-between">
 			<h2 className="center-text">Please sign in below</h2>
 			<form className="login-register-form" onSubmit={(e) => onSubmit(e)}>
 				<input

@@ -56,6 +56,15 @@ p {
   .logo {
     max-height: 50px;
   }
+
+  a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 200px;
+    color: white;
+  }
 }
 
 .general-main {
@@ -66,8 +75,6 @@ p {
 }
 
 .landing {
-  display: flex;
-  flex-flow: column nowrap;
   p {
     &:nth-child(1) {
       margin-top: 0.5rem;
@@ -81,8 +88,19 @@ p {
   }
 }
 
-.login-register {
-  justify-content: space-between;
+.dashboard {
+  display: flex;
+  align-items: center;
+  div {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 300px;
+  }
+
+  p {
+    font-size: $font-size-default * 1.1;
+  }
 }
 
 .register-button {
@@ -132,6 +150,10 @@ button:active {
   width: 200px;
 }
 
+.btn-large {
+  width: 300px;
+}
+
 // Forms
 .login-register-form {
   display: flex;
@@ -177,4 +199,8 @@ input {
 
 .mb-4 {
   margin-bottom: 1rem;
+}
+
+.justify-between {
+  justify-content: space-between;
 }

@@ -14,11 +14,11 @@ export default function Register() {
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
-		console.log("Registered!");
+		console.log("Registered!", e);
 	}
 
 	return (
-		<main className="general-main login-register">
+		<main className="general-main justify-between">
 			<div className="text">
 				<h2 className="center-text">New to Just Lift?</h2>
 				<p>Just register below and you can start logging right away!</p>
