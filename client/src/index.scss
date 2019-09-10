@@ -1,5 +1,9 @@
 $primary-color: #03dac6;
 $secondary-color: #6100ed;
+$dark-color: #343a40;
+$light-color: #f4f4f4;
+$danger-color: #dc3545;
+$success-color: #28a745;
 $font-size-default: 18px;
 $font-headings: "Julius Sans One", sans-serif;
 $font-body: "Crimson Text", serif;
@@ -8,6 +12,7 @@ $font-body: "Crimson Text", serif;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  outline: 1px solid #f00
 }
 
 html {
@@ -109,6 +114,43 @@ p {
   align-items: center;
 }
 
+// Alerts
+.alert {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem;
+  margin: 1rem 0;
+  opacity: 0.9;
+  background: $light-color;
+  color: #333;
+}
+
+.alert-light {
+  background: $light-color;
+  color: #333;
+}
+
+.alert-dark {
+  background: $dark-color;
+  color: #fff;
+}
+
+.alert-danger {
+  background: $danger-color;
+  color: #fff;
+}
+
+.alert-success {
+  background: $success-color;
+  color: #fff;
+}
+
+.alert-white {
+  background: #fff;
+  color: #333;
+  border: #ccc solid 1px;
+}
+
 // Buttons
 .buttons-landing {
   justify-self: flex-end;
@@ -152,6 +194,12 @@ button:active {
 
 .btn-large {
   width: 300px;
+}
+
+.btn-alert-delete {
+  font-size: $font-size-default * 1.2;
+  background: none;
+  border: 0;
 }
 
 // Forms
