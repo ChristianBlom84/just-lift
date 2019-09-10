@@ -7,6 +7,7 @@ import store from '../store';
 
 // Components
 import Header from '../components/Header';
+import Alert from '../components/Alert';
 import Login from './Login';
 import Register from './Register';
 import Landing from './Landing';
@@ -21,6 +22,7 @@ function App() {
 			<Router>
 				<Fragment>
 					<Header />
+					<Alert />
 					<Switch>
 						<Route exact path='/' component={Landing} />
 						<Route exact path='/login' component={Login} />
