@@ -45,8 +45,8 @@ services:
       - internal
       - web
     labels:
-      - traefik.backend=u11
-      - traefik.frontend.rule=Host:u11.christianblom.se
+      - traefik.backend=justlift
+      - traefik.frontend.rule=Host:justlift.christianblom.se
       - traefik.port=80
       - traefik.docker.network=web
 
