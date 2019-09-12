@@ -23,6 +23,7 @@ services:
       - ./server/deploy/.env
     networks:
       - internal
+      - web
     labels:
       - traefik.backend=justlift-api
       - traefik.frontend.rule=Host:justlift-api.christianblom.se

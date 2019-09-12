@@ -15,6 +15,7 @@ import Dashboard from './Dashboard';
 import Workouts from './Workouts';
 import Exercises from './Exercises';
 import History from './History';
+import PrivateRoute from '../components/routing/PrivateRoute';
 
 function App() {
 	return (
@@ -27,10 +28,10 @@ function App() {
 						<Route exact path='/' component={Landing} />
 						<Route exact path='/login' component={Login} />
 						<Route exact path='/register' component={Register} />
-						<Route exact path='/dashboard' component={Dashboard} />
-						<Route exact path='/workouts' component={Workouts} />
-						<Route exact path='/exercises' component={Exercises} />
-						<Route exact path='/history' component={History} />
+						<PrivateRoute exact path='/dashboard' component={Dashboard} />
+						<PrivateRoute exact path='/workouts' component={Workouts} />
+						<PrivateRoute exact path='/exercises' component={Exercises} />
+						<PrivateRoute exact path='/history' component={History} />
 					</Switch>
 				</Fragment>
 			</Router>
