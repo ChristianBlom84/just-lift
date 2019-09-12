@@ -14,6 +14,7 @@ import Landing from './Landing';
 import Dashboard from './Dashboard';
 import Workouts from './Workouts';
 import Exercises from './Exercises';
+import CreateExercise from './CreateExercise';
 import History from './History';
 import PrivateRoute from '../components/routing/PrivateRoute';
 
@@ -31,6 +32,7 @@ function App() {
 						<PrivateRoute exact path='/dashboard' component={Dashboard} />
 						<PrivateRoute exact path='/workouts' component={Workouts} />
 						<PrivateRoute exact path='/exercises' component={Exercises} />
+						<PrivateRoute exact path='/exercises/create' component={CreateExercise} />
 						<PrivateRoute exact path='/history' component={History} />
 					</Switch>
 				</Fragment>

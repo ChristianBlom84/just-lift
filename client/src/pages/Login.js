@@ -31,7 +31,7 @@ function Login({ setAlert, login, isAuthenticated }) {
 	return (
 		<main className="general-main justify-between">
 			<h2 className="center-text">Please sign in below</h2>
-			<form className="login-register-form" onSubmit={(e) => onSubmit(e)}>
+			<form className="base-form login-register-form" onSubmit={(e) => onSubmit(e)}>
 				<input
 					className="mb-4"
 					type="email"
@@ -49,12 +49,12 @@ function Login({ setAlert, login, isAuthenticated }) {
 					onChange={(e) => onChange(e)}
 					required
 				/>
-				<button type="submit" className="btn btn-primary mt-4 btn-medium">LOGIN</button>
+				<button type="submit" className="btn btn-primary mt-4 btn-m">LOGIN</button>
 			</form>
 			<footer className="register-button">
 				<p>Don&apos;t have an account?</p>
 				<Link to="/register">
-					<button type="button" className="btn btn-secondary btn-medium">REGISTER</button>
+					<button type="button" className="btn btn-secondary btn-m">REGISTER</button>
 				</Link>
 			</footer>
 		</main>
