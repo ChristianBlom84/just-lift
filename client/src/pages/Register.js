@@ -40,7 +40,7 @@ function Register({ setAlert, register, isAuthenticated }) {
 				<h2 className="center-text">New to Just Lift?</h2>
 				<p>Just register below and you can start logging right away!</p>
 			</div>
-			<form className="login-register-form" onSubmit={(e) => onSubmit(e)}>
+			<form className="base-form login-register-form" onSubmit={(e) => onSubmit(e)}>
 				<input
 					className="mb-4"
 					type="text"
@@ -78,12 +78,12 @@ function Register({ setAlert, register, isAuthenticated }) {
 					onChange={(e) => onChange(e)}
 					required
 				/>
-				<button type="submit" className="btn btn-primary mt-4 btn-medium">REGISTER</button>
+				<button type="submit" className="btn btn-primary mt-4 btn-m">REGISTER</button>
 			</form>
 			<footer className="register-button">
 				<p>Already have an account?</p>
 				<Link to="/login">
-					<button type="button" className="btn btn-secondary btn-medium">LOGIN</button>
+					<button type="button" className="btn btn-secondary btn-m">LOGIN</button>
 				</Link>
 			</footer>
 		</main>

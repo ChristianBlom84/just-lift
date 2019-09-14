@@ -12,7 +12,7 @@ $font-body: "Crimson Text", serif;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  outline: 1px solid #f00
+  // outline: 1px solid #f00
 }
 
 html {
@@ -114,6 +114,10 @@ p {
   align-items: center;
 }
 
+.exercise-categories {
+  flex-grow: 1;
+}
+
 // Alerts
 .alert {
   display: flex;
@@ -154,8 +158,8 @@ p {
 // Buttons
 .buttons-landing {
   justify-self: flex-end;
-  flex: 0 1 80px;
   display: flex;
+  flex: 0 1 80px;
   justify-content: space-around;
 }
 
@@ -188,11 +192,21 @@ button:active {
   box-shadow: 1px 1px 3px rgba($secondary-color, 0.2);
 }
 
-.btn-medium {
+.btn-xs {
+  width: 100px;
+  height: 2.5rem;
+}
+
+.btn-sm {
+  width: 150px;
+  height: 2.5rem;
+}
+
+.btn-m {
   width: 200px;
 }
 
-.btn-large {
+.btn-l {
   width: 300px;
 }
 
@@ -203,14 +217,18 @@ button:active {
 }
 
 // Forms
-.login-register-form {
+.base-form {
   display: flex;
   flex-direction: column;
   align-self: center;
   min-width: 300px;
+  width: 100%;
   max-width: 500px;
   min-height: 200px;
+  height: 100%;
+}
 
+.login-register-form {
   button {
     align-self: center;
   }
@@ -224,6 +242,70 @@ input {
   padding: 0 1rem;
 }
 
+.form-group-category {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+
+  label {
+    font-family: $font-body;
+    span {
+      font-family: $font-body;
+    }
+  }
+}
+
+div.category-select {
+  width: 100%;
+}
+
+.reps-sets {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  margin-left: 1rem;
+  div {
+    &:nth-child(1) {
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+.super-set {
+  justify-content: space-between;
+  min-height: 58px;
+  div {
+    max-width: 8rem;
+  }
+}
+
+.progression {
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  div {
+    max-width: 8rem;
+  }
+}
+
+.notes {
+  div {
+    width: 100%;
+  }
+}
+
+// Lists
+li {
+  list-style: none;
+}
+
+.categories {
+  li {
+    border-bottom: 1px solid #e3e3e3;
+    line-height: 2.5rem;
+  }
+}
+
 // Utility classes
 .center-text {
   text-align: center;
@@ -231,6 +313,10 @@ input {
 
 .mt-2 {
   margin-top: 0.5rem;
+}
+
+.mt-3 {
+  margin-top: 0.75rem;
 }
 
 .mt-4 {
@@ -251,4 +337,16 @@ input {
 
 .justify-between {
   justify-content: space-between;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.align-end {
+  align-items: flex-end;
 }
