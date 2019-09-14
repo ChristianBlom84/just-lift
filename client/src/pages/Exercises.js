@@ -8,7 +8,7 @@ export default function Exercises({ match }) {
 		<main className="general-main">
 			<h2 className="center-text">Exercises</h2>
 			<Categories />
-			<div className="flex justify-between flex-basis-bottom">
+			<div className="flex justify-between">
 				<Link to={`${match.url}/create`}>
 					<button type="button" className="btn btn-primary btn-sm">NEW EXERCISE</button>
 				</Link>

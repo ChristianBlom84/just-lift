@@ -7,20 +7,20 @@ const connectDB = require('./config/db');
 const app = express();
 
 const corsOptions = {
-	origin: process.env.ALLOW_ORIGIN,
-}
+	origin: process.env.ALLOW_ORIGIN
+};
 
-	// Connect Database
-	(async () => {
-		try {
-			console.log('Connecting to DB');
-			await connectDB();
-		} catch (error) {
-			console.log('MongoDB connection error');
-			console.error(error);
-			setTimeout(connectDB(), 5000);
-		}
-	})();
+// Connect Database
+(async () => {
+	try {
+		console.log('Connecting to DB');
+		await connectDB();
+	} catch (error) {
+		console.log('MongoDB connection error');
+		console.error(error);
+		setTimeout(connectDB(), 5000);
+	}
+})();
 
 // Init Middleware
 app.use(express.json({ extended: false }));

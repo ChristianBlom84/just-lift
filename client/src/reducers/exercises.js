@@ -1,4 +1,6 @@
-import { } from '../actions/types';
+import {
+	SAVE_EXERCISE
+} from '../actions/types';
 
 const initialState = {
 	categories: [
@@ -21,6 +23,8 @@ export default function (state = initialState, action) {
 	const { type, payload } = action;
 
 	switch (type) {
+		case SAVE_EXERCISE:
+			return state;
 		default:
 			return state;
 	}

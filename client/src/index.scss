@@ -225,6 +225,7 @@ button:active {
   width: 100%;
   max-width: 500px;
   min-height: 200px;
+  height: 100%;
 }
 
 .login-register-form {
@@ -243,11 +244,53 @@ input {
 
 .form-group-category {
   display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
 
   label {
+    font-family: $font-body;
+    span {
+      font-family: $font-body;
+    }
+  }
+}
+
+div.category-select {
+  width: 100%;
+}
+
+.reps-sets {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  margin-left: 1rem;
+  div {
+    &:nth-child(1) {
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+.super-set {
+  justify-content: space-between;
+  min-height: 58px;
+  div {
+    max-width: 8rem;
+  }
+}
+
+.progression {
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  div {
+    max-width: 8rem;
+  }
+}
+
+.notes {
+  div {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
   }
 }
 
@@ -300,6 +343,10 @@ li {
   display: flex;
 }
 
-.flex-basis-bottom {
+.flex-grow {
+  flex-grow: 1;
+}
 
+.align-end {
+  align-items: flex-end;
 }
