@@ -5,8 +5,31 @@ import {
 	REGISTER_SUCCESS,
 	REGISTER_FAIL,
 	LOGIN_SUCCESS,
-	LOGIN_FAIL
+	LOGIN_FAIL,
+	AUTH_ERROR,
+	USER_LOADED
 } from './types';
+import setAuthToken from '../utils/setAuthToken';
+
+// Load User
+export const loadUser = () => async dispatch => {
+	if (localStorage.token) {
+		setAuthToken(localStorage.token);
+	}
+
+	try {
+		const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/auth`);
+
+		dispatch({
+			type: USER_LOADED,
+			payload: res.data
+		});
+	} catch (err) {
+		dispatch({
+			type: AUTH_ERROR
+		});
+	}
+}
 
 // Register User
 export const register = ({ name, email, password }) => async dispatch => {
@@ -55,6 +78,8 @@ export const login = ({ email, password }) => async dispatch => {
 			type: LOGIN_SUCCESS,
 			payload: res.data
 		});
+
+		dispatch(loadUser());
 	} catch (err) {
 		const { errors } = err.response.data;
 

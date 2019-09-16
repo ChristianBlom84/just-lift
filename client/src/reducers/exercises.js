@@ -17,6 +17,7 @@ const initialState = {
 			id: 2,
 		},
 	],
+	exercises: []
 }
 
 export default function (state = initialState, action) {
@@ -24,7 +25,10 @@ export default function (state = initialState, action) {
 
 	switch (type) {
 		case SAVE_EXERCISE:
-			return state;
+			return {
+				...state,
+				exercises: [...state.exercises, payload]
+			};
 		default:
 			return state;
 	}

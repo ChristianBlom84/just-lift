@@ -1,0 +1,54 @@
+[
+  {
+    "_id": "5d7f69b08d1873009df10bd1",
+    "userId": "5d78ee781e75db00295f65c3",
+    "name": "Superset Squats",
+    "category": "Legs",
+    "sets": 1,
+    "reps": null,
+    "superSet": true,
+    "totalReps": 20,
+    "progression": 2.5,
+    "notes": "Superset low-bar squats.",
+    "__v": 0
+  },
+  {
+    "_id": "5d7f6bdd61dce700b5e698a4",
+    "userId": "5d78ee781e75db00295f65c3",
+    "name": "Squat",
+    "category": "Legs",
+    "sets": 3,
+    "reps": 5,
+    "superSet": false,
+    "totalReps": null,
+    "progression": 2.5,
+    "notes": "Low-bar squats.",
+    "__v": 0
+  },
+  {
+    "_id": "5d7f6be861dce700b5e698a5",
+    "userId": "5d78ee781e75db00295f65c3",
+    "name": "Deadlift",
+    "category": "Back",
+    "sets": 3,
+    "reps": 5,
+    "superSet": false,
+    "totalReps": null,
+    "progression": 2.5,
+    "notes": "",
+    "__v": 0
+  },
+  {
+    "_id": "5d7f6bf361dce700b5e698a6",
+    "userId": "5d78ee781e75db00295f65c3",
+    "name": "Superset Deadlifts",
+    "category": "Back",
+    "sets": 1,
+    "reps": null,
+    "superSet": true,
+    "totalReps": 20,
+    "progression": 2.5,
+    "notes": "Superset deadlifts.",
+    "__v": 0
+  }
+]

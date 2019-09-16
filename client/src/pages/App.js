@@ -1,9 +1,11 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // Redux
 import { Provider } from 'react-redux';
 import store from '../store';
+import setAuthToken from '../utils/setAuthToken';
+import { loadUser } from '../actions/auth';
 
 // Components
 import Header from '../components/Header';
@@ -18,7 +20,15 @@ import CreateExercise from './CreateExercise';
 import History from './History';
 import PrivateRoute from '../components/routing/PrivateRoute';
 
+if (localStorage.token) {
+	setAuthToken(localStorage.token);
+}
+
 function App() {
+	useEffect(() => {
+		store.dispatch(loadUser());
+	}, []);
+
 	return (
 		<Provider store={store}>
 			<Router>
