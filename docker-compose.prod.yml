@@ -78,5 +78,7 @@ services:
       - traefik.frontend.rule=Host:adminmongo.christianblom.se
       - traefik.docker.network=web
       - traefik.port=1234
+    environment:
+      - HOST=0.0.0.0
 volumes:
   database:

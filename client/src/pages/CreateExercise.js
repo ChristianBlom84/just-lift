@@ -22,7 +22,7 @@ function CreateExercise({ categories }) {
 		totalReps: null,
 		progression: 2.5,
 		notes: ''
-	})
+	});
 
 	const inputLabel = React.useRef(null);
 	const [labelWidth, setLabelWidth] = React.useState(0);
@@ -51,9 +51,6 @@ function CreateExercise({ categories }) {
 					value={name}
 					onChange={(e) => onChange(e)}
 					type="text"
-					InputLabelProps={{
-						shrink: true,
-					}}
 					variant="outlined"
 				/>
 				<div className="form-group-category mt-4">

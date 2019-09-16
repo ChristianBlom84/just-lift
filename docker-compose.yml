@@ -38,7 +38,10 @@ services:
     env_file:
       - ./server/deploy/.env
     volumes:
-      - ./server/deploy/mongo/001_create-users.js:/docker-entrypoint-initdb.d/001_create-users.js:ro
+      - ./server/deploy/mongo/:/docker-entrypoint-initdb.d/:ro
+      - type: volume
+        source: mongodb_database
+        target: /data/db
 
   adminmongo:
     container_name: 'mongodb-admin'
@@ -47,3 +50,5 @@ services:
       - ${ADMINMONGO_PORT}:1234
 volumes:
   database:
+  mongodb_database:
+    external: true

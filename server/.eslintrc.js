@@ -5,5 +5,6 @@ module.exports = {
 	rules: {
 		'func-names': [0],
 		'no-underscore-dangle': [0],
+		'consistent-return': 'off',
 	},
 };
