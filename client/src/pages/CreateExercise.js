@@ -11,7 +11,10 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import TextField from '@material-ui/core/TextField';
 
-function CreateExercise({ categories }) {
+import { setAlert } from '../actions/alert';
+import { saveExercise } from '../actions/exercises';
+
+function CreateExercise({ categories, setAlert, saveExercise }) {
 
 	const [formData, setFormData] = useState({
 		name: '',
@@ -40,10 +43,21 @@ function CreateExercise({ categories }) {
 		}
 	};
 
+	const onSubmit = async (e) => {
+		e.preventDefault();
+		console.log("Saving exercise");
+		try {
+			console.log("Inside saving try");
+			await saveExercise(formData);
+		} catch (err) {
+			setAlert(err, 'danger');
+		}
+	}
+
 	return (
 		<main className="general-main">
 			<h2 className="center-text">Create New Exercise:</h2>
-			<form className="base-form mt-2">
+			<form className="base-form mt-2" onSubmit={(e) => onSubmit(e)}>
 				<TextField
 					id="name"
 					name="name"
@@ -52,9 +66,10 @@ function CreateExercise({ categories }) {
 					onChange={(e) => onChange(e)}
 					type="text"
 					variant="outlined"
+					required
 				/>
 				<div className="form-group-category mt-4">
-					<FormControl className="category-select" variant="outlined">
+					<FormControl required className="category-select" variant="outlined">
 						<InputLabel ref={inputLabel} className="" htmlFor="category">Category:</InputLabel>
 						<Select
 							native
@@ -64,12 +79,12 @@ function CreateExercise({ categories }) {
 							onChange={(e) => onChange(e)}
 							inputProps={{
 								name: 'category',
-								id: 'category',
+								id: 'category'
 							}}
 						>
 							<option value="" />
 							{categories.map((reduxCategory) => (
-								<option key={reduxCategory.id} value={reduxCategory.id}>{reduxCategory.name}</option>
+								<option key={reduxCategory.id} value={reduxCategory.name}>{reduxCategory.name}</option>
 							))}
 						</Select>
 					</FormControl>
@@ -134,7 +149,8 @@ function CreateExercise({ categories }) {
 						onChange={(e) => onChange(e)}
 						type="number"
 						inputProps={{
-							min: "0"
+							min: "0",
+							step: "0.5"
 						}}
 						InputLabelProps={{
 							shrink: true,
@@ -173,7 +189,7 @@ function CreateExercise({ categories }) {
 					/>
 				</div>
 				<div className="flex justify-between flex-grow align-end">
-					<button type="button" className="btn btn-primary btn-sm">SAVE EXERCISE</button>
+					<button type="submit" className="btn btn-primary btn-sm">SAVE EXERCISE</button>
 					<Link to='/exercises'>
 						<button type="button" className="btn btn-secondary btn-sm">BACK</button>
 					</Link>
@@ -195,4 +211,4 @@ const mapStateToProps = state => ({
 	categories: state.exercises.categories
 })
 
-export default connect(mapStateToProps, null)(CreateExercise);
+export default connect(mapStateToProps, { setAlert, saveExercise })(CreateExercise);
