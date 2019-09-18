@@ -1,7 +1,34 @@
 /* eslint-disable import/prefer-default-export */
 import axios from 'axios';
 import { setAlert } from './alert';
-import { SAVE_EXERCISE } from './types';
+import {
+	CREATE_EXERCISE,
+	GET_EXERCISES,
+	CREATE_CATEGORY,
+	GET_CATEGORIES
+} from './types';
+
+// Exercises Actions
+
+// Get Exercises
+export const getExercises = () => async dispatch => {
+	const config = {
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	}
+
+	try {
+		const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/exercises`, config);
+
+		dispatch({
+			type: GET_EXERCISES,
+			payload: res.data
+		})
+	} catch (err) {
+		setAlert(err, 'danger');
+	}
+}
 
 // Save Exercise
 export const saveExercise = (formData) => async dispatch => {
@@ -11,14 +38,61 @@ export const saveExercise = (formData) => async dispatch => {
 		}
 	}
 
-	console.log("Inside saveExercise action");
 	try {
 		const res = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/exercises`, formData, config);
 
-		console.log(res);
+		dispatch({
+			type: CREATE_EXERCISE,
+			payload: res.data
+		});
+
+		if (res.data.name) {
+			dispatch(setAlert(`${res.data.name} successfully saved!`, 'success'));
+		}
+	} catch (err) {
+		const { errors } = err.response.data;
+
+		if (errors) {
+			errors.forEach(error => dispatch(setAlert(error.msg, 'danger')))
+		}
+	}
+}
+
+// Categories Actions
+
+// Get Categories
+export const getCategories = () => async dispatch => {
+	const config = {
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	}
+
+	try {
+		const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/exercises/categories`, config);
 
 		dispatch({
-			type: SAVE_EXERCISE,
+			type: GET_CATEGORIES,
+			payload: res.data
+		})
+	} catch (err) {
+		setAlert(err, 'danger');
+	}
+}
+
+// Save Category
+export const saveCategory = (name) => async dispatch => {
+	const config = {
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	}
+
+	try {
+		const res = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/exercises/categories`, name, config);
+
+		dispatch({
+			type: CREATE_CATEGORY,
 			payload: res.data
 		});
 

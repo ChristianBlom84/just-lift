@@ -15,7 +15,9 @@ import Register from './Register';
 import Landing from './Landing';
 import Dashboard from './Dashboard';
 import Workouts from './Workouts';
+import Exercise from './Exercise';
 import Exercises from './Exercises';
+import Category from './Category';
 import CreateExercise from './CreateExercise';
 import History from './History';
 import PrivateRoute from '../components/routing/PrivateRoute';
@@ -43,6 +45,8 @@ function App() {
 						<PrivateRoute exact path='/workouts' component={Workouts} />
 						<PrivateRoute exact path='/exercises' component={Exercises} />
 						<PrivateRoute exact path='/exercises/create' component={CreateExercise} />
+						<PrivateRoute exact path='/exercises/:category' component={Category} />
+						<PrivateRoute exact path='/exercises/:category/:exerciseName' component={Exercise} />
 						<PrivateRoute exact path='/history' component={History} />
 					</Switch>
 				</Fragment>

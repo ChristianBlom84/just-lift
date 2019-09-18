@@ -1,6 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import axios from 'axios';
 import { setAlert } from './alert';
+import { getExercises, getCategories } from './exercises';
 import {
 	REGISTER_SUCCESS,
 	REGISTER_FAIL,
@@ -24,6 +25,9 @@ export const loadUser = () => async dispatch => {
 			type: USER_LOADED,
 			payload: res.data
 		});
+
+		dispatch(getExercises());
+		dispatch(getCategories());
 	} catch (err) {
 		dispatch({
 			type: AUTH_ERROR
