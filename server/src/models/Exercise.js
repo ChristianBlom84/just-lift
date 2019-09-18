@@ -5,7 +5,18 @@ const ExerciseSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
+	linkName: {
+		type: String
+	},
 	category: {
+		type: String,
+		required: true
+	},
+	categoryLinkName: {
+		type: String,
+		required: true
+	},
+	categoryId: {
 		type: String,
 		required: true
 	},
