@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 import ExercisesList from '../components/exercises/ExercisesList';
 import Spinner from '../components/layout/Spinner';
 
-function Category({ match, loading, categories }) {
-	const [currentCategory] = categories.filter((category) => category.linkName === match.params.category);
+function Category({ match, loading, currentCategory }) {
+	console.log(currentCategory);
 
-	return (!loading && currentCategory.name !== undefined) ? (
+	return !loading && currentCategory ? (
 		<main className="general-main">
 			<h2 className="center-text">Exercises</h2>
 			<div className="exercise-categories">
@@ -16,7 +16,7 @@ function Category({ match, loading, categories }) {
 				<ExercisesList categoryName={currentCategory.name} match={match} />
 			</div>
 			<div className="flex justify-between">
-				<Link to={`${match.url}/create`}>
+				<Link to='/exercise/create'>
 					<button type="button" className="btn btn-primary btn-sm">NEW EXERCISE</button>
 				</Link>
 				<Link to='/exercises'>
@@ -32,12 +32,17 @@ function Category({ match, loading, categories }) {
 Category.propTypes = {
 	match: PropTypes.object.isRequired,
 	loading: PropTypes.bool.isRequired,
-	categories: PropTypes.array.isRequired,
+	currentCategory: PropTypes.object.isRequired,
 }
 
-const mapStateToProps = state => ({
-	loading: state.exercises.loading,
-	categories: state.exercises.categories
-})
+const mapStateToProps = (state, ownProps) => {
+	const { match } = ownProps;
+	const [currentCategory] = state.exercises.categories.filter((category) => category.linkName === match.params.category);
+
+	return {
+		loading: state.exercises.loading,
+		currentCategory
+	}
+}
 
 export default connect(mapStateToProps, null)(Category);

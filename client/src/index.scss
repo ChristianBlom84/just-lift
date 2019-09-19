@@ -36,6 +36,14 @@ p {
   margin: 0.5rem 0;
 }
 
+.bold {
+  font-weight: 600;
+}
+
+.enlarge {
+  font-size: 1.2rem;
+}
+
 // Containers
 // sass-lint:disable id-name-format
 #root {
@@ -354,8 +362,16 @@ li {
   margin-bottom: 1rem;
 }
 
+.ml-4 {
+  margin-left: 1rem;
+}
+
 .justify-between {
   justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
 }
 
 .flex {

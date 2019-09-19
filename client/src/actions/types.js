@@ -5,6 +5,7 @@ export const REGISTER_FAIL = 'REGISTER_FAIL';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const CREATE_EXERCISE = 'CREATE_EXERCISE';
+export const UPDATE_EXERCISE = 'UPDATE_EXERCISE';
 export const GET_EXERCISES = 'GET_EXERCISES';
 export const USER_LOADED = 'USER_LOADED';
 export const AUTH_ERROR = 'AUTH_ERROR';

@@ -1,5 +1,6 @@
 import {
 	CREATE_EXERCISE,
+	UPDATE_EXERCISE,
 	GET_EXERCISES,
 	CREATE_CATEGORY,
 	GET_CATEGORIES
@@ -16,6 +17,7 @@ export default function (state = initialState, action) {
 
 	switch (type) {
 		case CREATE_EXERCISE:
+		case UPDATE_EXERCISE:
 			return {
 				...state,
 				loading: false,

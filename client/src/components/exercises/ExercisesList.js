@@ -40,4 +40,4 @@ const mapStateToProps = state => ({
 	loading: state.exercises.loading,
 })
 
-export default connect(mapStateToProps, null)(ExercisesList)
+export default connect(mapStateToProps, null)(ExercisesList);
