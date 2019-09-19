@@ -11,7 +11,7 @@ services:
     container_name: 'u11_server'
     build:
       context: ./server
-      dockerfile: ./deploy/Dockerfile.prod
+      dockerfile: ./deploy/Dockerfile
     image: u11_express_server
     volumes:
       - ${LOCAL_SERVER_PATH}:/home/node/app
