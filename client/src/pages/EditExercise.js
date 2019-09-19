@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -12,9 +12,9 @@ import Switch from '@material-ui/core/Switch';
 import TextField from '@material-ui/core/TextField';
 
 import { setAlert } from '../actions/alert';
-import { saveExercise } from '../actions/exercises';
+import { updateExercise } from '../actions/exercises';
 
-function CreateExercise({ categories, setAlert, saveExercise }) {
+function EditExercise({ categories, setAlert, updateExercise, location: { exerciseToEdit }, history }) {
 
 	const [formData, setFormData] = useState({
 		name: '',
@@ -26,6 +26,23 @@ function CreateExercise({ categories, setAlert, saveExercise }) {
 		progression: 2.5,
 		notes: ''
 	});
+
+	if (exerciseToEdit) {
+		useEffect(() => {
+			const { name, category, sets, reps, superSet, totalReps, progression, notes } = exerciseToEdit;
+
+			setFormData({
+				name,
+				category,
+				sets,
+				reps,
+				superSet,
+				totalReps,
+				progression,
+				notes,
+			});
+		}, []);
+	}
 
 	const inputLabel = React.useRef(null);
 	const [labelWidth, setLabelWidth] = React.useState(0);
@@ -46,7 +63,11 @@ function CreateExercise({ categories, setAlert, saveExercise }) {
 	const onSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			await saveExercise(formData);
+			await updateExercise(formData);
+
+			setTimeout(() => {
+				history.goBack();
+			}, 2000)
 		} catch (err) {
 			setAlert(err, 'danger');
 		}
@@ -54,7 +75,7 @@ function CreateExercise({ categories, setAlert, saveExercise }) {
 
 	return (
 		<main className="general-main">
-			<h2 className="center-text">Create New Exercise:</h2>
+			<h2 className="center-text">Edit Exercise:</h2>
 			<form className="base-form mt-2" onSubmit={(e) => onSubmit(e)}>
 				<TextField
 					id="name"
@@ -187,7 +208,7 @@ function CreateExercise({ categories, setAlert, saveExercise }) {
 					/>
 				</div>
 				<div className="flex justify-between flex-grow align-end">
-					<button type="submit" className="btn btn-primary btn-sm">SAVE EXERCISE</button>
+					<button type="submit" className="btn btn-primary btn-sm">UPDATE EXERCISE</button>
 					<Link to='/exercises'>
 						<button type="button" className="btn btn-secondary btn-sm">BACK</button>
 					</Link>
@@ -197,13 +218,15 @@ function CreateExercise({ categories, setAlert, saveExercise }) {
 	)
 }
 
-CreateExercise.propTypes = {
+EditExercise.propTypes = {
 	categories: PropTypes.array,
 	setAlert: PropTypes.func.isRequired,
-	saveExercise: PropTypes.func.isRequired,
+	updateExercise: PropTypes.func.isRequired,
+	location: PropTypes.object.isRequired,
+	history: PropTypes.object.isRequired,
 }
 
-CreateExercise.defaultProps = {
+EditExercise.defaultProps = {
 	categories: [],
 }
 
@@ -211,4 +234,4 @@ const mapStateToProps = state => ({
 	categories: state.exercises.categories
 })
 
-export default connect(mapStateToProps, { setAlert, saveExercise })(CreateExercise);
+export default connect(mapStateToProps, { setAlert, updateExercise })(EditExercise);

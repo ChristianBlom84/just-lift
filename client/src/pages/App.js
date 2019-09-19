@@ -19,6 +19,7 @@ import Exercise from './Exercise';
 import Exercises from './Exercises';
 import Category from './Category';
 import CreateExercise from './CreateExercise';
+import EditExercise from './EditExercise';
 import History from './History';
 import PrivateRoute from '../components/routing/PrivateRoute';
 
@@ -45,6 +46,7 @@ function App() {
 						<PrivateRoute exact path='/workouts' component={Workouts} />
 						<PrivateRoute exact path='/exercises' component={Exercises} />
 						<PrivateRoute exact path='/exercises/create' component={CreateExercise} />
+						<PrivateRoute exact path='/exercises/edit' component={EditExercise} />
 						<PrivateRoute exact path='/exercises/:category' component={Category} />
 						<PrivateRoute exact path='/exercises/:category/:exerciseName' component={Exercise} />
 						<PrivateRoute exact path='/history' component={History} />

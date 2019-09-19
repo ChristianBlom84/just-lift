@@ -101,6 +101,80 @@ router.post('/', auth, [
 	}
 );
 
+// @route   PUT api/exercises
+// @desc    Edit an exercise
+// @access  Private
+router.put('/', auth, [
+	check('name', 'You must specify a name')
+		.not().isEmpty().bail().trim().escape(),
+	check('category', 'You must specify a category')
+		.not().isEmpty().bail().trim().escape(),
+	check('sets', 'Sets must be a number of 1 or more')
+		.not().isEmpty().bail().isNumeric().toInt(),
+	check('reps', 'Reps must be a number of 1 or more')
+		.optional({ nullable: true }).isNumeric().toInt(),
+	check('superSet')
+		.toBoolean(),
+	check('totalReps')
+		.optional({ nullable: true })
+		.if(check('reps').isNumeric())
+		.isNumeric().toInt(),
+	check('progression', 'Progression must be a non-negative number')
+		.not().isEmpty().bail().isNumeric().toFloat(),
+	check('notes')
+		.trim().escape()
+],
+	async (req, res) => {
+		const errors = validationResult(req);
+		if (!errors.isEmpty()) {
+			return res.status(400).json({ errors: errors.array() });
+		}
+
+		const {
+			name,
+			category,
+			sets,
+			reps,
+			superSet,
+			totalReps,
+			progression,
+			notes
+		} = req.body;
+
+		const linkName = name.toLowerCase().replace(/\s/g, '-');
+
+		const exerciseFields = {
+			userId: req.user.id,
+			name,
+			linkName,
+			category,
+			categoryLinkName: '',
+			categoryId: '',
+			sets,
+			reps,
+			superSet,
+			totalReps,
+			progression,
+			notes
+		};
+
+		try {
+			const categoryModel = await Category.findOne({ name: category, userId: req.user.id });
+
+			exerciseFields.categoryLinkName = categoryModel.linkName;
+			exerciseFields.categoryId = categoryModel.id;
+
+			const existingExercise = await Exercise.findOneAndUpdate({ userId: req.user.id, name }, exerciseFields, { new: true });
+
+			await existingExercise.save();
+			return res.json(existingExercise);
+		} catch (err) {
+			console.error(err.message);
+			res.status(500).send('Server Error');
+		}
+	}
+);
+
 // Category routes
 
 // @route   GET api/exercises/categories
