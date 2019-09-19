@@ -8,7 +8,7 @@ const User = require('../../models/User');
 const router = express.Router();
 
 // @route   GET api/auth
-// @desc    Test route
+// @desc    Get current user
 // @access  Public
 router.get('/', auth, async (req, res) => {
 	try {
@@ -114,7 +114,7 @@ router.post('/register', [
 			jwt.sign(
 				payload,
 				process.env.JWT_SECRET,
-				{ expiresIn: 360000 },
+				{ expiresIn: 360000 }, // Change this in production
 				(err, token) => {
 					if (err) throw err;
 					res.json({ token });

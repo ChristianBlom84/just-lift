@@ -9,7 +9,7 @@ const router = express.Router();
 // Exercise routes
 
 // @route   GET api/exercises
-// @desc    Get users exercises
+// @desc    Get user's exercises
 // @access  Private
 router.get('/', auth, async (req, res) => {
 	try {

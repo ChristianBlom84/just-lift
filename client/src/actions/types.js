@@ -11,3 +11,5 @@ export const USER_LOADED = 'USER_LOADED';
 export const AUTH_ERROR = 'AUTH_ERROR';
 export const GET_CATEGORIES = 'GET_CATEGORIES';
 export const CREATE_CATEGORY = 'CREATE_CATEGORY';
+export const GET_WORKOUTS = 'GET_WORKOUTS';
+export const CREATE_WORKOUT = 'CREATE_WORKOUT';
