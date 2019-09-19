@@ -28,9 +28,11 @@ function Exercise({ exercise, loading }) {
 						</div>
 					</div>
 				)}
-			<div className="mt-4"><span className="bold enlarge">Progression weight: </span>{exercise.progression} kgs</div>
+			<div className="mt-4 flex-grow">
+				<span className="bold enlarge">Progression weight: </span>{exercise.progression} kgs
+			</div>
 			{exercise.notes ? (
-				<div className="mt-4">
+				<div className="mt-4 flex-grow">
 					<span className="bold enlarge">Notes: </span>
 					<p>{exercise.notes}</p>
 				</div>

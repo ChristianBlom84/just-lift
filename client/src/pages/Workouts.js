@@ -2,8 +2,8 @@ import React from 'react'
 
 export default function Workouts() {
 	return (
-		<div>
-			Workouts
-		</div>
+		<main className="general-main">
+			<h2 class="center-text">Choose today&apos;s workout</h2>
+		</main>
 	)
 }
