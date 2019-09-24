@@ -38,6 +38,9 @@ const ExerciseSchema = new mongoose.Schema({
 		type: Number,
 		required: true
 	},
+	nextStartWeight: {
+		type: Number
+	},
 	notes: {
 		type: String
 	},

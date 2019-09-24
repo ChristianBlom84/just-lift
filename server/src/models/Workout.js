@@ -15,6 +15,13 @@ const WorkoutSchema = new mongoose.Schema({
 			ref: 'exercise'
 		}
 	],
+	notes: String,
+	history: [
+		{
+			date: Date,
+			notes: String
+		}
+	],
 	userId: {
 		type: String,
 		required: true

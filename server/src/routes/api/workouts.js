@@ -11,7 +11,7 @@ const router = express.Router();
 // @access  Private
 router.get('/', auth, async (req, res) => {
 	try {
-		const workouts = await Workout.find({ userId: req.user.id });
+		const workouts = await Workout.find({ userId: req.user.id }).populate('exercises');
 		return res.json(workouts);
 	} catch (err) {
 		console.error(err.message);
@@ -26,7 +26,9 @@ router.post('/', auth, [
 	check('name', 'You must specify a name')
 		.not().isEmpty().bail().trim().escape(),
 	check('exercises', 'You must add at least one exercise')
-		.not().isEmpty()
+		.not().isEmpty(),
+	check('notes')
+		.optional().trim().escape()
 ],
 	async (req, res) => {
 		const errors = validationResult(req);
@@ -34,7 +36,7 @@ router.post('/', auth, [
 			return res.status(400).json({ errors: errors.array() });
 		}
 
-		const { name, exercises } = req.body;
+		const { name, exercises, notes } = req.body;
 
 		const linkName = name.toLowerCase().replace(/\s/g, '-').replace(/,/g, '');
 
@@ -45,7 +47,7 @@ router.post('/', auth, [
 				return res.status(400).json({ errors: [{ msg: 'Workout with that name already exists' }] });
 			}
 
-			const newWorkout = new Workout({ name, linkName, exercises, userId: req.user.id });
+			const newWorkout = new Workout({ name, linkName, exercises, notes, userId: req.user.id });
 
 			await newWorkout.save();
 			return res.json(newWorkout);

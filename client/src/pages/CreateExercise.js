@@ -15,14 +15,13 @@ import { setAlert } from '../actions/alert';
 import { saveExercise } from '../actions/exercises';
 
 function CreateExercise({ categories, setAlert, saveExercise }) {
-
 	const [formData, setFormData] = useState({
 		name: '',
 		category: '',
 		sets: 3,
 		reps: 5,
 		superSet: false,
-		totalReps: null,
+		totalReps: 20,
 		progression: 2.5,
 		notes: ''
 	});
@@ -37,7 +36,7 @@ function CreateExercise({ categories, setAlert, saveExercise }) {
 
 	const onChange = (e) => {
 		if (e.target.name === 'superSet') {
-			setFormData({ ...formData, [e.target.name]: e.target.checked })
+			setFormData({ ...formData, superSet: !superSet })
 		} else {
 			setFormData({ ...formData, [e.target.name]: e.target.value })
 		}
@@ -82,7 +81,7 @@ function CreateExercise({ categories, setAlert, saveExercise }) {
 						>
 							<option value="" />
 							{categories.map((reduxCategory) => (
-								<option key={reduxCategory.id} value={reduxCategory.name}>{reduxCategory.name}</option>
+								<option key={reduxCategory.name} value={reduxCategory.name}>{reduxCategory.name}</option>
 							))}
 						</Select>
 					</FormControl>
@@ -198,13 +197,9 @@ function CreateExercise({ categories, setAlert, saveExercise }) {
 }
 
 CreateExercise.propTypes = {
-	categories: PropTypes.array,
+	categories: PropTypes.array.isRequired,
 	setAlert: PropTypes.func.isRequired,
 	saveExercise: PropTypes.func.isRequired,
-}
-
-CreateExercise.defaultProps = {
-	categories: [],
 }
 
 const mapStateToProps = state => ({

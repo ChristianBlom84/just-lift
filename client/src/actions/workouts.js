@@ -2,10 +2,12 @@ import axios from 'axios';
 import { setAlert } from './alert';
 import {
 	GET_WORKOUTS,
-	CREATE_WORKOUT
+	CREATE_WORKOUT,
+	START_WORKOUT,
+	UPDATE_WORKOUT_PROGRESS,
+	FINISH_WORKOUT
 } from './types';
 
-// Get Workouts
 export const getWorkouts = () => async dispatch => {
 	const config = {
 		headers: {
@@ -23,4 +25,18 @@ export const getWorkouts = () => async dispatch => {
 	} catch (err) {
 		setAlert(err, 'danger');
 	}
+}
+
+export const startWorkout = (workout) => dispatch => {
+	dispatch({
+		type: START_WORKOUT,
+		payload: workout
+	})
+}
+
+export const updateWorkoutProgress = (progress) => dispatch => {
+	dispatch({
+		type: UPDATE_WORKOUT_PROGRESS,
+		payload: progress
+	})
 }

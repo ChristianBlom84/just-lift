@@ -15,6 +15,9 @@ import Register from './Register';
 import Landing from './Landing';
 import Dashboard from './Dashboard';
 import Workouts from './Workouts';
+import Workout from './Workout';
+import TodaysWorkout from './TodaysWorkout';
+import CreateWorkout from './CreateWorkout';
 import Exercise from './Exercise';
 import Exercises from './Exercises';
 import Category from './Category';
@@ -44,6 +47,9 @@ function App() {
 						<Route exact path='/register' component={Register} />
 						<PrivateRoute exact path='/dashboard' component={Dashboard} />
 						<PrivateRoute exact path='/workouts' component={Workouts} />
+						<PrivateRoute exact path='/workouts/create' component={CreateWorkout} />
+						<PrivateRoute exact path='/workouts/todays-workout' component={TodaysWorkout} />
+						<PrivateRoute exact path='/workouts/:workoutName' component={Workout} />
 						<PrivateRoute exact path='/exercises' component={Exercises} />
 						<PrivateRoute exact path='/exercises/create' component={CreateExercise} />
 						<PrivateRoute exact path='/exercises/edit' component={EditExercise} />
