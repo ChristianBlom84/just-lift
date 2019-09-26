@@ -11,11 +11,24 @@ const router = express.Router();
 // @access  Private
 router.get('/', auth, async (req, res) => {
 	try {
-		const workouts = await Workout.find({ userId: req.user.id });
+		const workouts = await Workout.find({ userId: req.user.id }).populate('exercises');
 		return res.json(workouts);
 	} catch (err) {
 		console.error(err.message);
-		return res.status(500).send('Server error, could not retrieve exercises');
+		return res.status(500).send('Server error, could not retrieve workouts');
+	}
+});
+
+// @route   GET api/workouts/:workoutId
+// @desc    Get user's workouts
+// @access  Private
+router.get('/:workoutId', auth, async (req, res) => {
+	try {
+		const workout = await Workout.find({ userId: req.user.id, _id: req.params.id }).populate('exercises');
+		return res.json(workout);
+	} catch (err) {
+		console.error(err.message);
+		return res.status(500).send('Server error, could not retrieve workout');
 	}
 });
 
@@ -26,7 +39,9 @@ router.post('/', auth, [
 	check('name', 'You must specify a name')
 		.not().isEmpty().bail().trim().escape(),
 	check('exercises', 'You must add at least one exercise')
-		.not().isEmpty()
+		.not().isEmpty(),
+	check('notes')
+		.optional().trim().escape()
 ],
 	async (req, res) => {
 		const errors = validationResult(req);
@@ -34,9 +49,9 @@ router.post('/', auth, [
 			return res.status(400).json({ errors: errors.array() });
 		}
 
-		const { name, exercises } = req.body;
+		const { name, exercises, notes } = req.body;
 
-		const linkName = name.toLowerCase().replace(/\s/g, '-').replace(/,/g, '');
+		const linkName = name.toLowerCase().replace(/\s/g, '-').replace(/,/g, '').replace(/åä/g, 'a').replace(/ö/g, 'o');
 
 		try {
 			const workoutExists = await Workout.findOne({ userId: req.user.id, name });
@@ -45,7 +60,7 @@ router.post('/', auth, [
 				return res.status(400).json({ errors: [{ msg: 'Workout with that name already exists' }] });
 			}
 
-			const newWorkout = new Workout({ name, linkName, exercises, userId: req.user.id });
+			const newWorkout = new Workout({ name, linkName, exercises, notes, userId: req.user.id });
 
 			await newWorkout.save();
 			return res.json(newWorkout);
@@ -55,5 +70,19 @@ router.post('/', auth, [
 		}
 	}
 );
+
+// @route   PUT api/workouts/:workoutId
+// @desc    Update an existing workout
+// @access  Private
+router.put('/:workoutId', auth, [
+	check('name')
+		.optional().trim().escape(),
+	check('notes')
+		.optional().trim().escape(),
+],
+	async (req, res) => {
+		// @TODO Implement this!
+	}
+)
 
 module.exports = router;

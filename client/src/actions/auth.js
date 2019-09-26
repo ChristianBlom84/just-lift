@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { setAlert } from './alert';
 import { getExercises, getCategories } from './exercises';
+import { getWorkouts } from './workouts';
 import {
 	REGISTER_SUCCESS,
 	REGISTER_FAIL,
@@ -28,6 +29,7 @@ export const loadUser = () => async dispatch => {
 
 		dispatch(getExercises());
 		dispatch(getCategories());
+		dispatch(getWorkouts());
 	} catch (err) {
 		dispatch({
 			type: AUTH_ERROR

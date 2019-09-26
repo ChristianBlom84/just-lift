@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const ExerciseSchema = new mongoose.Schema({
 	name: {
 		type: String,
-		required: true
+		required: true,
+		unique: true
 	},
 	linkName: {
 		type: String
@@ -38,9 +39,21 @@ const ExerciseSchema = new mongoose.Schema({
 		type: Number,
 		required: true
 	},
+	nextStartWeight: {
+		type: Number
+	},
 	notes: {
 		type: String
 	},
+	history: [
+		{
+			date: Date,
+			sets: Number,
+			reps: Number,
+			weight: Number,
+			totalLifted: Number,
+		}
+	],
 	userId: {
 		type: String,
 		required: true

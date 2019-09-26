@@ -11,7 +11,6 @@ import {
 
 // Exercises Actions
 
-// Get Exercises
 export const getExercises = () => async dispatch => {
 	const config = {
 		headers: {
@@ -31,7 +30,6 @@ export const getExercises = () => async dispatch => {
 	}
 }
 
-// Save Exercise
 export const saveExercise = (formData) => async dispatch => {
 	const config = {
 		headers: {
@@ -59,7 +57,6 @@ export const saveExercise = (formData) => async dispatch => {
 	}
 }
 
-// Update Exercise
 export const updateExercise = (formData) => async dispatch => {
 	const config = {
 		headers: {
@@ -89,7 +86,6 @@ export const updateExercise = (formData) => async dispatch => {
 
 // Categories Actions
 
-// Get Categories
 export const getCategories = () => async dispatch => {
 	const config = {
 		headers: {

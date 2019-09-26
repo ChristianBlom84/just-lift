@@ -43,7 +43,7 @@ function CategoriesList({ match, categories, saveCategory }) {
 				))}
 				<li><button onClick={handleClickOpen} className="btn btn-secondary btn-link" type="button">NEW CATEGORY</button></li>
 			</ul>
-			<Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+			<Dialog open={open} onClose={handleClose} aria-label="Add category dialog">
 				<DialogContent>
 					<TextField
 						autoFocus

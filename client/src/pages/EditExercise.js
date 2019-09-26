@@ -103,7 +103,7 @@ function EditExercise({ categories, setAlert, updateExercise, location: { exerci
 						>
 							<option value="" />
 							{categories.map((reduxCategory) => (
-								<option key={reduxCategory.id} value={reduxCategory.name}>{reduxCategory.name}</option>
+								<option key={reduxCategory.name} value={reduxCategory.name}>{reduxCategory.name}</option>
 							))}
 						</Select>
 					</FormControl>
@@ -219,15 +219,11 @@ function EditExercise({ categories, setAlert, updateExercise, location: { exerci
 }
 
 EditExercise.propTypes = {
-	categories: PropTypes.array,
+	categories: PropTypes.array.isRequired,
 	setAlert: PropTypes.func.isRequired,
 	updateExercise: PropTypes.func.isRequired,
 	location: PropTypes.object.isRequired,
 	history: PropTypes.object.isRequired,
-}
-
-EditExercise.defaultProps = {
-	categories: [],
 }
 
 const mapStateToProps = state => ({

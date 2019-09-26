@@ -17,12 +17,17 @@ export default function (state = initialState, action) {
 
 	switch (type) {
 		case CREATE_EXERCISE:
-		case UPDATE_EXERCISE:
 			return {
 				...state,
 				loading: false,
 				exercises: [...state.exercises, payload]
 			};
+		case UPDATE_EXERCISE:
+			return {
+				...state,
+				loading: false,
+				exercises: [...state.exercises.filter((exercise) => exercise.name !== payload.name), payload]
+			}
 		case GET_EXERCISES:
 			return {
 				...state,
