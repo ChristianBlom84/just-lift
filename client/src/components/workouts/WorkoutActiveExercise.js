@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
@@ -14,8 +15,11 @@ const useStyles = makeStyles(() => ({
 		maxWidth: "3rem",
 	},
 	weightInput: {
-		maxWidth: "6rem"
-	}
+		maxWidth: "4.5rem",
+	},
+	positionEnd: {
+		marginLeft: "0",
+	},
 }));
 
 function WorkoutActiveExercise({ exercise, updateWorkoutProgress }) {
@@ -38,21 +42,26 @@ function WorkoutActiveExercise({ exercise, updateWorkoutProgress }) {
 	})
 
 	useEffect(() => {
-		updateWorkoutProgress({ [exercise.name]: [...sets] })
-	}, [sets, updateWorkoutProgress, exercise.name])
+		updateWorkoutProgress({ [exercise.name]: { id: exercise._id, sets: [...sets], weight: Number(weight[exercise.name]) } })
+	}, [sets, updateWorkoutProgress, exercise.name, exercise._id, weight])
 
 	const onChange = (e, index) => {
-		setSets(prevSets => {
-			return prevSets.map((prevSet, idx) => {
-				if (index !== idx) {
-					return prevSet;
-				}
-				if (e.target.value === 'done') {
-					return { ...prevSet, done: e.target.checked };
-				}
-				return { ...prevSet, reps: Number(e.target.value) };
+		if (e.target.name === `${exercise.name}-weight`) {
+			setWeight({ [exercise.name]: e.target.value });
+		} else {
+			setSets(prevSets => {
+				return prevSets.map((prevSet, idx) => {
+					if (index !== idx) {
+						return prevSet;
+					}
+					if (e.target.value === 'done') {
+						return { ...prevSet, done: e.target.checked };
+					}
+					return { ...prevSet, reps: Number(e.target.value) };
+				})
 			})
-		})
+		}
+
 	}
 
 	return exercise && sets ? (
@@ -68,9 +77,8 @@ function WorkoutActiveExercise({ exercise, updateWorkoutProgress }) {
 					onChange={(e) => onChange(e)}
 					type="number"
 					InputProps={{
-						min: "1",
-						step: "1",
-						endAdornment: <InputAdornment position="end">Kg</InputAdornment>
+						min: "0",
+						endAdornment: <InputAdornment classes={{ positionEnd: classes.positionEnd }} position="end">Kg</InputAdornment>
 					}}
 					InputLabelProps={{
 						shrink: true,
@@ -93,7 +101,7 @@ function WorkoutActiveExercise({ exercise, updateWorkoutProgress }) {
 								onChange={(e) => onChange(e, index)}
 								type="number"
 								inputProps={{
-									min: "1",
+									min: "0",
 									step: "1"
 								}}
 								InputLabelProps={{

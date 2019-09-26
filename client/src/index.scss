@@ -47,7 +47,7 @@ p {
 // Containers
 // sass-lint:disable id-name-format
 #root {
-  min-height: 100vh;
+  min-height: 95vh;
   display: flex;
   flex-flow: column;
 }
@@ -225,9 +225,20 @@ button:active {
 }
 
 .btn-link {
+  background: white;
   border: 0;
+  border-radius: 0;
   box-shadow: none;
   width: 100%;
+}
+
+.btn-delete {
+  background: none;
+  color: black;
+  cursor: pointer;
+  box-shadow: none;
+  max-width: 3rem;
+  border: 0;
 }
 
 // Forms
@@ -260,6 +271,23 @@ input {
   box-shadow: 0;
   height: 2.5rem;
   padding: 0 1rem;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.textfield-container .MuiOutlinedInput-adornedEnd {
+  padding-right: 0.5rem;
+}
+
+p.MuiTypography-body1 {
+  font-family: $font-body;
 }
 
 .form-group-category {
@@ -314,6 +342,10 @@ div.category-select {
   div {
     width: 100%;
   }
+}
+
+.workout-dialog {
+  min-width: 200px;
 }
 
 // Lists
@@ -382,6 +414,11 @@ li {
   margin: 1rem;
 }
 
+.mx-4, div.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -432,6 +469,10 @@ li {
 
 .justify-center {
   justify-content: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
 }
 
 .flex {

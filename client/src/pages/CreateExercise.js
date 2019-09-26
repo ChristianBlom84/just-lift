@@ -185,7 +185,7 @@ function CreateExercise({ categories, setAlert, saveExercise }) {
 						variant="outlined"
 					/>
 				</div>
-				<div className="flex justify-between flex-grow align-end">
+				<div className="flex justify-between flex-grow align-end mt-4">
 					<button type="submit" className="btn btn-primary btn-sm">SAVE EXERCISE</button>
 					<Link to='/exercises'>
 						<button type="button" className="btn btn-secondary btn-sm">BACK</button>

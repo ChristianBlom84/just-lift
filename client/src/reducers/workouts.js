@@ -59,7 +59,6 @@ export default function (state = initialState, action) {
 				loading: false,
 				currentWorkout: null,
 				currentWorkoutProgress: null,
-				workouts: [...state.workouts, payload]
 			};
 		default:
 			return state;
