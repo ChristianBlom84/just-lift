@@ -10,18 +10,34 @@ import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import { makeStyles } from '@material-ui/core/styles';
 
 import { setAlert } from '../actions/alert';
 import { saveExercise } from '../actions/exercises';
 
+const useStyles = makeStyles(() => ({
+	textField: {
+		maxWidth: "3rem",
+	},
+	weightInput: {
+		maxWidth: "4.5rem",
+	},
+	positionEnd: {
+		marginLeft: "0",
+	},
+}));
+
 function CreateExercise({ categories, setAlert, saveExercise }) {
+	const classes = useStyles();
+
 	const [formData, setFormData] = useState({
 		name: '',
 		category: '',
 		sets: 3,
 		reps: 5,
 		superSet: false,
-		totalReps: 20,
+		totalReps: null,
 		progression: 2.5,
 		notes: ''
 	});
@@ -44,6 +60,14 @@ function CreateExercise({ categories, setAlert, saveExercise }) {
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
+
+		if (formData.superSet === false && formData.totalReps !== null) {
+			setFormData({
+				...formData,
+				totalReps: null
+			});
+		}
+
 		try {
 			await saveExercise(formData);
 		} catch (err) {
@@ -145,9 +169,12 @@ function CreateExercise({ categories, setAlert, saveExercise }) {
 						value={progression}
 						onChange={(e) => onChange(e)}
 						type="number"
-						inputProps={{
-							min: "0",
-							step: "0.5"
+						InputProps={{
+							inputProps: {
+								min: "0",
+								step: "0.5",
+							},
+							endAdornment: <InputAdornment classes={{ positionEnd: classes.positionEnd }} position="end">Kg</InputAdornment>
 						}}
 						InputLabelProps={{
 							shrink: true,

@@ -322,7 +322,6 @@ div.category-select {
 
 .super-set {
   justify-content: space-between;
-  min-height: 58px;
   div {
     max-width: 8rem;
   }
@@ -410,6 +409,10 @@ li {
   text-align: center;
 }
 
+.border-bottom-faded {
+  border-bottom: 1px solid rgba(black, 0.2);
+}
+
 .m-4 {
   margin: 1rem;
 }
@@ -417,6 +420,10 @@ li {
 .mx-4, div.mx-4 {
   margin-left: 1rem;
   margin-right: 1rem;
+}
+
+.mt-0 {
+  margin-top: 0;
 }
 
 .mt-2 {

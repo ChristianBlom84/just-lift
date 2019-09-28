@@ -78,6 +78,10 @@ router.post('/', auth, [
 			notes
 		};
 
+		if (exerciseFields.superSet === false && exerciseFields.totalReps !== null) {
+			exerciseFields.totalReps = null;
+		}
+
 		try {
 			const categoryModel = await Category.findOne({ name: category, userId: req.user.id });
 

@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { setAlert } from './alert';
+import { getExercises } from './exercises';
 import {
 	GET_WORKOUTS,
 	CREATE_WORKOUT,
 	START_WORKOUT,
 	UPDATE_WORKOUT_PROGRESS,
-	FINISH_WORKOUT
+	FINISH_WORKOUT,
 } from './types';
 
 export const getWorkouts = () => async dispatch => {
@@ -69,9 +70,30 @@ export const updateWorkoutProgress = (progress) => dispatch => {
 }
 
 export const finishWorkout = (workout, workoutData) => async dispatch => {
+	const config = {
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	}
 
+	try {
+		const res = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/history`, { workout, workoutData }, config);
 
-	dispatch({
-		type: FINISH_WORKOUT
-	})
+		if (!res.data.errors) {
+			dispatch({
+				type: FINISH_WORKOUT
+			})
+
+			dispatch(getExercises());
+			dispatch(getWorkouts());
+			dispatch(setAlert('Workout finished!', 'success'));
+		}
+
+	} catch (err) {
+		const { errors } = err.response.data;
+
+		if (errors) {
+			errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+		}
+	}
 }

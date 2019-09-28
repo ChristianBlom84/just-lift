@@ -7,8 +7,8 @@ import Spinner from '../components/layout/Spinner';
 
 function Workout({ workout, loading, startWorkout, history }) {
 
-	const handleStartWorkout = () => {
-		startWorkout(workout);
+	const handleStartWorkout = async () => {
+		await startWorkout(workout);
 		history.push('/workouts/todays-workout');
 	}
 

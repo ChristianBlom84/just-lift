@@ -22,14 +22,22 @@ const useStyles = makeStyles(() => ({
 	},
 }));
 
-function WorkoutActiveExercise({ exercise, updateWorkoutProgress }) {
+function WorkoutActiveExercise({ exercise, workoutProgress, updateWorkoutProgress }) {
 	const classes = useStyles();
 
 	const [sets, setSets] = useState(() => {
 		let initialState = [];
-		for (let i = 0; i < exercise.sets; i += 1) {
-			if (i === 0) initialState.push({ set: i + 1, done: false, reps: exercise.reps });
-			else initialState = [...initialState, { set: i + 1, done: false, reps: exercise.reps }];
+
+		if (exercise.superSet === true) {
+			for (let i = 0; i < exercise.sets; i += 1) {
+				if (i === 0) initialState.push({ set: i + 1, done: false, reps: 0 });
+				else initialState = [...initialState, { set: i + 1, done: false, reps: 0 }];
+			}
+		} else {
+			for (let i = 0; i < exercise.sets; i += 1) {
+				if (i === 0) initialState.push({ set: i + 1, done: false, reps: exercise.reps });
+				else initialState = [...initialState, { set: i + 1, done: false, reps: exercise.reps }];
+			}
 		}
 		return initialState;
 	});
@@ -42,8 +50,8 @@ function WorkoutActiveExercise({ exercise, updateWorkoutProgress }) {
 	})
 
 	useEffect(() => {
-		updateWorkoutProgress({ [exercise.name]: { id: exercise._id, sets: [...sets], weight: Number(weight[exercise.name]) } })
-	}, [sets, updateWorkoutProgress, exercise.name, exercise._id, weight])
+		updateWorkoutProgress({ [exercise.name]: { id: exercise._id, sets: [...sets], superSet: exercise.superSet, weight: Number(weight[exercise.name]) } })
+	}, [sets, updateWorkoutProgress, exercise, weight])
 
 	const onChange = (e, index) => {
 		if (e.target.name === `${exercise.name}-weight`) {
@@ -86,6 +94,7 @@ function WorkoutActiveExercise({ exercise, updateWorkoutProgress }) {
 					variant="outlined"
 				/>
 			</div>
+			{exercise.superSet ? <p className="center-text mt-0">Total rep goal: {exercise.totalReps}</p> : null}
 			<ul className="categories active-exercise-list">
 				{Array(exercise.sets).fill(null).map((value, index) => (
 					// eslint-disable-next-line react/no-array-index-key
