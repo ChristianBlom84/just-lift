@@ -56,11 +56,11 @@ function CategoriesList({ match, categories, saveCategory }) {
 					/>
 				</DialogContent>
 				<DialogActions>
-					<button type="button" onClick={handleClose} className="btn btn-xs btn-secondary btn-link">
-						Cancel
-          </button>
-					<button type="button" onClick={handleSubmit} className="btn btn-xs btn-primary btn-link">
+					<button type="button" onClick={handleSubmit} className="btn btn-xs btn-primary">
 						Save
+          </button>
+					<button type="button" onClick={handleClose} className="btn btn-xs btn-secondary">
+						Cancel
           </button>
 				</DialogActions>
 			</Dialog>

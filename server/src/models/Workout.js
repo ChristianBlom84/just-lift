@@ -3,8 +3,7 @@ const mongoose = require('mongoose');
 const WorkoutSchema = new mongoose.Schema({
 	name: {
 		type: String,
-		required: true,
-		unique: true
+		required: true
 	},
 	linkName: {
 		type: String,

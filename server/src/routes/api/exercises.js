@@ -182,7 +182,7 @@ router.put('/', auth, [
 // Category routes
 
 // @route   GET api/exercises/categories
-// @desc    Get users exercises
+// @desc    Get users categories
 // @access  Private
 router.get('/categories', auth, async (req, res) => {
 	try {
@@ -200,7 +200,7 @@ router.get('/categories', auth, async (req, res) => {
 // @access  Private
 router.post('/categories', auth, [
 	check('name', 'You must specify a name')
-		.not().isEmpty().bail().trim().escape(),
+		.not().isEmpty().bail().trim().escape()
 ],
 	async (req, res) => {
 		const errors = validationResult(req);
