@@ -16,7 +16,7 @@ function Category({ match, loading, currentCategory }) {
 				<ExercisesList categoryName={currentCategory.name} match={match} />
 			</div>
 			<div className="flex justify-between">
-				<Link to='/exercise/create'>
+				<Link to='/exercises/create'>
 					<button type="button" className="btn btn-primary btn-sm">NEW EXERCISE</button>
 				</Link>
 				<Link to='/exercises'>
