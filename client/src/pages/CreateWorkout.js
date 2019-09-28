@@ -8,7 +8,7 @@ import WorkoutAddExerciseDialog from '../components/workouts/WorkoutAddExerciseD
 import { createWorkout } from '../actions/workouts';
 import { setAlert } from '../actions/alert';
 
-function CreateWorkout({ createWorkout, categories, propExercises }) {
+function CreateWorkout({ createWorkout, categories, propExercises, history }) {
 	const [formData, setFormData] = useState({
 		name: '',
 		exercises: [],
@@ -46,6 +46,7 @@ function CreateWorkout({ createWorkout, categories, propExercises }) {
 		e.preventDefault();
 		try {
 			await createWorkout(formData);
+			history.push('/workouts');
 		} catch (err) {
 			setAlert(err, 'danger');
 		}
@@ -105,6 +106,7 @@ CreateWorkout.propTypes = {
 	createWorkout: PropTypes.func.isRequired,
 	categories: PropTypes.array.isRequired,
 	propExercises: PropTypes.array.isRequired,
+	history: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = state => ({

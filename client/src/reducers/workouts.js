@@ -1,5 +1,4 @@
 import {
-	LOADING,
 	GET_WORKOUTS,
 	CREATE_WORKOUT,
 	UPDATE_WORKOUT_PROGRESS,
@@ -14,7 +13,7 @@ const initialState = {
 		}
 	],
 	currentWorkout: {},
-	currentWorkoutProgress: {},
+	currentWorkoutProgress: [],
 	loading: true,
 	workoutActive: false,
 }
@@ -23,11 +22,6 @@ export default function (state = initialState, action) {
 	const { type, payload } = action;
 
 	switch (type) {
-		case LOADING:
-			return {
-				...state,
-				loading: true
-			}
 		case GET_WORKOUTS:
 			return {
 				...state,

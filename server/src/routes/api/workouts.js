@@ -20,7 +20,7 @@ router.get('/', auth, async (req, res) => {
 });
 
 // @route   GET api/workouts/:workoutId
-// @desc    Get user's workouts
+// @desc    Get a single workout
 // @access  Private
 router.get('/:workoutId', auth, async (req, res) => {
 	try {

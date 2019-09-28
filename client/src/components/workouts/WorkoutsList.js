@@ -12,7 +12,7 @@ function WorkoutsList({ match, workouts, loading }) {
 					<Link
 						key={`Link ${workout.name}`}
 						to={{
-							pathname: `${match.url}/${workout.linkName}`,
+							pathname: `/workouts/${workout.linkName}`,
 							workout
 						}}>
 						<li className="exercise" key={workout.id}>{workout.name}</li>

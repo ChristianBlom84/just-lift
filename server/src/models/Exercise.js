@@ -47,10 +47,20 @@ const ExerciseSchema = new mongoose.Schema({
 	},
 	history: [
 		{
-			date: Date,
-			sets: Number,
-			reps: Number,
+			date: {
+				type: Date,
+				default: Date.now,
+			},
+			sets: [
+				{
+					set: Number,
+					done: Boolean,
+					reps: Number,
+				}
+			],
+			totalReps: Number,
 			weight: Number,
+			allRepsCompleted: Boolean,
 			totalLifted: Number,
 		}
 	],
