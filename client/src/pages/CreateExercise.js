@@ -28,7 +28,7 @@ const useStyles = makeStyles(() => ({
 	},
 }));
 
-function CreateExercise({ categories, setAlert, saveExercise }) {
+function CreateExercise({ categories, setAlert, saveExercise, history }) {
 	const classes = useStyles();
 
 	const [formData, setFormData] = useState({
@@ -70,6 +70,7 @@ function CreateExercise({ categories, setAlert, saveExercise }) {
 
 		try {
 			await saveExercise(formData);
+			history.push('/exercises');
 		} catch (err) {
 			setAlert(err, 'danger');
 		}
@@ -227,6 +228,7 @@ CreateExercise.propTypes = {
 	categories: PropTypes.array.isRequired,
 	setAlert: PropTypes.func.isRequired,
 	saveExercise: PropTypes.func.isRequired,
+	history: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = state => ({
