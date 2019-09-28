@@ -505,3 +505,9 @@ li {
 .self-center {
   align-self: center;
 }
+
+// Material UI Overrides
+div.MuiDialogActions-root {
+  justify-content: space-between;
+  padding: 8px 24px;
+}
