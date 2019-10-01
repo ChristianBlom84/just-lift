@@ -4,6 +4,7 @@ import {
 	UPDATE_WORKOUT_PROGRESS,
 	START_WORKOUT,
 	FINISH_WORKOUT,
+	GET_WORKOUT_HISTORY,
 } from '../actions/types';
 
 const initialState = {
@@ -14,6 +15,9 @@ const initialState = {
 	],
 	currentWorkout: {},
 	currentWorkoutProgress: [],
+	workoutHistory: {
+		finishedWorkouts: []
+	},
 	loading: true,
 	workoutActive: false,
 }
@@ -53,6 +57,15 @@ export default function (state = initialState, action) {
 				loading: false,
 				currentWorkout: null,
 				currentWorkoutProgress: null,
+			};
+		case GET_WORKOUT_HISTORY:
+			return {
+				...state,
+				loading: false,
+				workoutHistory: {
+					...state.workoutHistory,
+					...payload
+				}
 			};
 		default:
 			return state;

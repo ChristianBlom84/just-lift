@@ -3,6 +3,7 @@ import { setAlert } from './alert';
 import { getExercises } from './exercises';
 import {
 	GET_WORKOUTS,
+	GET_WORKOUT_HISTORY,
 	CREATE_WORKOUT,
 	START_WORKOUT,
 	UPDATE_WORKOUT_PROGRESS,
@@ -69,6 +70,25 @@ export const updateWorkoutProgress = (progress) => dispatch => {
 	})
 }
 
+export const getWorkoutHistory = () => async dispatch => {
+	const config = {
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	}
+
+	try {
+		const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/history`, config);
+
+		dispatch({
+			type: GET_WORKOUT_HISTORY,
+			payload: res.data
+		})
+	} catch (err) {
+		setAlert(err, 'danger');
+	}
+}
+
 export const finishWorkout = (workout, workoutData) => async dispatch => {
 	const config = {
 		headers: {
@@ -86,6 +106,7 @@ export const finishWorkout = (workout, workoutData) => async dispatch => {
 
 			dispatch(getExercises());
 			dispatch(getWorkouts());
+			dispatch(getWorkoutHistory());
 			dispatch(setAlert('Workout finished!', 'success'));
 		}
 

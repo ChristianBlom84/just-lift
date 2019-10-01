@@ -24,6 +24,10 @@ import Category from './Category';
 import CreateExercise from './CreateExercise';
 import EditExercise from './EditExercise';
 import History from './History';
+import WorkoutHistory from './WorkoutHistory';
+import SingleWorkoutHistory from './SingleWorkoutHistory';
+import SingleWorkoutHistoryEntry from './SingleWorkoutHistoryEntry';
+import ExerciseHistory from './ExerciseHistory';
 import PrivateRoute from '../components/routing/PrivateRoute';
 
 if (localStorage.token) {
@@ -56,6 +60,10 @@ function App() {
 						<PrivateRoute exact path='/exercises/:category' component={Category} />
 						<PrivateRoute exact path='/exercises/:category/:exerciseName' component={Exercise} />
 						<PrivateRoute exact path='/history' component={History} />
+						<PrivateRoute exact path='/history/workouts' component={WorkoutHistory} />
+						<PrivateRoute exact path='/history/workouts/:workoutName' component={SingleWorkoutHistory} />
+						<PrivateRoute exact path='/history/workouts/:workoutName/:workoutEntryId' component={SingleWorkoutHistoryEntry} />
+						<PrivateRoute exact path='/history/exercises' component={ExerciseHistory} />
 					</Switch>
 				</Fragment>
 			</Router>

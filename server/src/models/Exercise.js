@@ -46,6 +46,7 @@ const ExerciseSchema = new mongoose.Schema({
 	},
 	history: [
 		{
+			name: String,
 			date: {
 				type: Date,
 				default: Date.now,
@@ -57,6 +58,7 @@ const ExerciseSchema = new mongoose.Schema({
 					reps: Number,
 				}
 			],
+			superSet: Boolean,
 			totalReps: Number,
 			weight: Number,
 			allRepsCompleted: Boolean,

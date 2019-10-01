@@ -1,5 +1,6 @@
 /* eslint-disable no-underscore-dangle */
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types'
 import DialogContent from '@material-ui/core/DialogContent';
 import Dialog from '@material-ui/core/Dialog';
@@ -42,6 +43,14 @@ function WorkoutAddExerciseDialog({ open, onClose, exercises, categories }) {
 								</li>
 							))
 						)}
+					{categoriesWithExercises.length === 0 ? (
+						<li className="flex column align-center">
+							<span className="enlarge">No exercises found!</span>
+							<Link to='/exercises/create'>
+								<button type="button" className="btn btn-secondary btn-xs btn-link">Create an exercise</button>
+							</Link>
+						</li>
+					) : (null)}
 				</ul>
 			</DialogContent>
 		</Dialog>
