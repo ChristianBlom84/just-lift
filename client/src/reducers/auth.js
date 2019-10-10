@@ -3,6 +3,7 @@ import {
 	REGISTER_FAIL,
 	LOGIN_SUCCESS,
 	LOGIN_FAIL,
+	GET_ADMIN_DATA,
 	USER_LOADED,
 	AUTH_ERROR
 } from '../actions/types';
@@ -11,7 +12,8 @@ const initialState = {
 	token: localStorage.getItem('token'),
 	isAuthenticated: null,
 	loading: true,
-	user: null
+	user: null,
+	admin: null,
 }
 
 export default function (state = initialState, action) {
@@ -33,6 +35,11 @@ export default function (state = initialState, action) {
 				...payload,
 				isAuthenticated: true,
 				loading: false
+			}
+		case GET_ADMIN_DATA:
+			return {
+				...state,
+				admin: payload
 			}
 		case REGISTER_FAIL:
 		case LOGIN_FAIL:

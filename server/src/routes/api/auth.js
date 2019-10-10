@@ -20,6 +20,25 @@ router.get('/', auth, async (req, res) => {
 	}
 });
 
+// @route   GET api/auth/admin
+// @desc    Get list of users for admin
+// @access  Private
+router.get('/admin', auth, async (req, res) => {
+	try {
+		const user = await User.findById(req.user.id).select('-password');
+		if (!user.isAdmin) {
+			res.status(401).send('Unauthorized, user is not an administrator.')
+		}
+
+		const users = await User.find().select('-password');
+
+		return res.json(users);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send('Server error');
+	}
+});
+
 // @route   POST api/auth/login
 // @desc    Authenticate user and get token
 // @access  Public

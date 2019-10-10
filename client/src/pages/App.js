@@ -30,6 +30,9 @@ import SingleWorkoutHistoryEntry from './SingleWorkoutHistoryEntry';
 import ExerciseHistory from './ExerciseHistory';
 import PrivateRoute from '../components/routing/PrivateRoute';
 
+import AdminRoute from '../components/routing/AdminRoute';
+import AdminPanel from './admin/AdminPanel';
+
 if (localStorage.token) {
 	setAuthToken(localStorage.token);
 }
@@ -64,6 +67,7 @@ function App() {
 						<PrivateRoute exact path='/history/workouts/:workoutName' component={SingleWorkoutHistory} />
 						<PrivateRoute exact path='/history/workouts/:workoutName/:workoutEntryId' component={SingleWorkoutHistoryEntry} />
 						<PrivateRoute exact path='/history/exercises' component={ExerciseHistory} />
+						<AdminRoute exact path='/admin' component={AdminPanel} />
 					</Switch>
 				</Fragment>
 			</Router>

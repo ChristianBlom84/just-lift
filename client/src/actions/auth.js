@@ -8,6 +8,7 @@ import {
 	REGISTER_FAIL,
 	LOGIN_SUCCESS,
 	LOGIN_FAIL,
+	GET_ADMIN_DATA,
 	AUTH_ERROR,
 	USER_LOADED
 } from './types';
@@ -31,6 +32,21 @@ export const loadUser = () => async dispatch => {
 		dispatch(getCategories());
 		dispatch(getWorkouts());
 		dispatch(getWorkoutHistory());
+	} catch (err) {
+		dispatch({
+			type: AUTH_ERROR
+		});
+	}
+}
+
+export const getAdminData = () => async dispatch => {
+	try {
+		const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/auth/admin`);
+
+		dispatch({
+			type: GET_ADMIN_DATA,
+			payload: res.data
+		});
 	} catch (err) {
 		dispatch({
 			type: AUTH_ERROR
