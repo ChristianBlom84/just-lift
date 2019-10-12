@@ -83,6 +83,7 @@ services:
       - traefik.port=1234
     environment:
       - HOST=0.0.0.0
+      - PASSWORD=${ADMINMONGO_PASSWORD}
 volumes:
   database:
   mongodb_database:

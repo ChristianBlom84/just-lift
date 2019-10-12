@@ -17,3 +17,4 @@ services:
   adminmongo:
     environment:
       - HOST=0.0.0.0
+      - PASSWORD=${ADMINMONGO_PASSWORD}

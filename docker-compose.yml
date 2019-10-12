@@ -48,6 +48,8 @@ services:
     image: mrvautin/adminmongo
     ports:
       - ${ADMINMONGO_PORT}:1234
+    environment:
+    - PASSWORD='test'
 volumes:
   database:
   mongodb_database:
