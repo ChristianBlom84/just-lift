@@ -63,7 +63,7 @@ function registerValidSW(swUrl, config) {
 				if (installingWorker == null) {
 					return;
 				}
-				installingWorker.onstatechange = async () => {
+				installingWorker.onstatechange = () => {
 					if (installingWorker.state === 'installed') {
 						if (navigator.serviceWorker.controller) {
 							// At this point, the updated precached content has been fetched,
@@ -73,15 +73,6 @@ function registerValidSW(swUrl, config) {
 								'New content is available and will be used when all ' +
 								'tabs for this page are closed. See https://bit.ly/CRA-PWA.'
 							);
-							const client = await clients.get(event.clientId);
-							// Exit early if we don't get the client.
-							// Eg, if it closed.
-							if (!client) return;
-							// Send a message to the client.
-							client.postMessage({
-								msg: 'New content is available and will be used when all ' +
-									'tabs for this page are closed.',
-							});
 
 							// Execute callback
 							if (config && config.onUpdate) {
