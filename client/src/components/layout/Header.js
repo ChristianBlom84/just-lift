@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import logo from '../images/icon512.svg';
+import logo from '../../images/icon512.svg';
 
 function Header({ isAuthenticated }) {
 	return (

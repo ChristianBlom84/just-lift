@@ -8,7 +8,7 @@ import setAuthToken from '../utils/setAuthToken';
 import { loadUser } from '../actions/auth';
 
 // Components
-import Header from '../components/Header';
+import Header from '../components/layout/Header';
 import Alert from '../components/Alert';
 import Login from './Login';
 import Register from './Register';
@@ -29,6 +29,7 @@ import SingleWorkoutHistory from './SingleWorkoutHistory';
 import SingleWorkoutHistoryEntry from './SingleWorkoutHistoryEntry';
 import ExerciseHistory from './ExerciseHistory';
 import PrivateRoute from '../components/routing/PrivateRoute';
+import TabBar from '../components/layout/TabBar';
 
 import AdminRoute from '../components/routing/AdminRoute';
 import AdminPanel from './admin/AdminPanel';
@@ -69,6 +70,7 @@ function App() {
 						<PrivateRoute exact path='/history/exercises' component={ExerciseHistory} />
 						<AdminRoute exact path='/admin' component={AdminPanel} />
 					</Switch>
+					<TabBar />
 				</Fragment>
 			</Router>
 		</Provider>
