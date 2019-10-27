@@ -12,9 +12,6 @@ export default function Exercises({ match }) {
 				<Link to={`${match.url}/create`}>
 					<button type="button" className="btn btn-primary btn-sm">NEW EXERCISE</button>
 				</Link>
-				<Link to='/dashboard'>
-					<button type="button" className="btn btn-secondary btn-sm">BACK</button>
-				</Link>
 			</div>
 		</main>
 	)
