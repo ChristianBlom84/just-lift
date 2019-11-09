@@ -15,7 +15,7 @@ const useStyles = makeStyles(() => ({
 		maxWidth: "3rem",
 	},
 	weightInput: {
-		maxWidth: "4.5rem",
+		maxWidth: "5.5rem",
 	},
 	positionEnd: {
 		marginLeft: "0",

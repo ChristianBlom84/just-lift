@@ -43,8 +43,7 @@ function TodaysWorkout({ loading, workout, workoutProgress, finishWorkout, histo
 				/>
 			</div>
 			<div className="flex justify-between flex-grow align-end m-4">
-				<button type="button" onClick={() => handleFinishWorkout()} className="btn btn-primary btn-sm">FINISH WORKOUT</button>
-				<button type="button" onClick={() => history.goBack()} className="btn btn-secondary btn-sm">BACK</button>
+				<button type="button" onClick={() => handleFinishWorkout()} className="btn btn-primary btn-xl">FINISH WORKOUT</button>
 			</div>
 		</main>
 	) : (

@@ -68,6 +68,7 @@ p {
   width: 100%;
   height: 4rem;
   justify-content: center;
+  z-index: 10;
 
   h1 {
     font-size: 1.5rem;
@@ -89,8 +90,8 @@ p {
 }
 
 main {
-  max-height: calc(100vh - 9rem);
   margin-top: 4rem;
+  margin-bottom: 4rem;
 }
 
 .general-main {
@@ -178,8 +179,9 @@ main {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 5rem;
+  height: 4rem;
   background: $primary-color;
+  z-index: 10;
 
   a {
     font-family: $font-headings;
@@ -193,6 +195,10 @@ main {
     justify-content: space-evenly;
     align-items: center;
     border-right: 1px solid white;
+
+    svg {
+      font-size: 1.5rem;
+    }
 
     &:nth-child(1) {
       width: 20%;
@@ -303,6 +309,10 @@ button:active {
 
 .btn-l {
   width: 16.5rem;
+}
+
+.btn-xl {
+  width: 100%;
 }
 
 .btn-alert-delete {

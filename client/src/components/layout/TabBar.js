@@ -8,10 +8,10 @@ import { faDoorOpen, faDumbbell, faWeightHanging, faChartPie } from '@fortawesom
 function TabBar({ isAuthenticated }) {
 	return isAuthenticated ? (
 		<nav className="tab-bar">
-			<Link to='/dashboard'><FontAwesomeIcon icon={faDoorOpen} size="2x" />Home</Link>
-			<Link to='/workouts'><FontAwesomeIcon icon={faDumbbell} size="2x" />Workouts</Link>
-			<Link to='/exercises'><FontAwesomeIcon icon={faWeightHanging} size="2x" />Exercises</Link>
-			<Link to='/history'><FontAwesomeIcon icon={faChartPie} size="2x" />History</Link>
+			<Link to='/dashboard'><FontAwesomeIcon icon={faDoorOpen} />Home</Link>
+			<Link to='/workouts'><FontAwesomeIcon icon={faDumbbell} />Workouts</Link>
+			<Link to='/exercises'><FontAwesomeIcon icon={faWeightHanging} />Exercises</Link>
+			<Link to='/history'><FontAwesomeIcon icon={faChartPie} />History</Link>
 		</nav>
 	) : null
 }
