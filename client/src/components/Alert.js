@@ -8,7 +8,7 @@ const Alert = ({ alerts, removeAlert }) =>
 	alerts !== null &&
 	alerts.length > 0 &&
 	alerts.map(alert => (
-		<div key={alert.id} className={`alert alert-${alert.alertType}`}>
+		<div key={alert.id} className={`alert alert-${alert.alertType}`} style={{ marginTop: `${alerts.length * 4}rem` }}>
 			{alert.msg}
 			<button type="button" className="btn-alert-delete" onClick={() => removeAlert(alert.id)}>X</button>
 		</div>
