@@ -46,6 +46,7 @@ export const createWorkout = (workout) => async dispatch => {
 
 		if (res.data.name) {
 			dispatch(setAlert(`${res.data.name} successfully saved!`, 'success'));
+			dispatch(getWorkouts());
 		}
 	} catch (err) {
 		const { errors } = err.response.data;

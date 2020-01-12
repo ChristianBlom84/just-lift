@@ -8,9 +8,9 @@ export default function Exercises({ match }) {
 		<main className="general-main">
 			<h2 className="center-text">Exercises</h2>
 			<CategoriesList match={match} />
-			<div className="flex justify-between">
+			<div className="flex justify-center">
 				<Link to="exercises/create">
-					<button type="button" className="btn btn-primary btn-xl">NEW EXERCISE</button>
+					<button type="button" className="btn btn-primary btn-l">NEW EXERCISE</button>
 				</Link>
 			</div>
 		</main>

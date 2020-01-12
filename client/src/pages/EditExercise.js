@@ -207,7 +207,7 @@ function EditExercise({ categories, setAlert, updateExercise, location: { exerci
 						variant="outlined"
 					/>
 				</div>
-				<div className="flex justify-between flex-grow align-end">
+				<div className="mt-4 flex justify-between flex-grow align-end">
 					<button type="submit" className="btn btn-primary btn-sm">UPDATE EXERCISE</button>
 					<Link to={`/exercises/${exerciseToEdit.categoryLinkName}/${exerciseToEdit.linkName}`}>
 						<button type="button" className="btn btn-secondary btn-sm">BACK</button>
