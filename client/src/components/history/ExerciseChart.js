@@ -27,15 +27,21 @@ const ExerciseChart = ({ exercises }) => {
 	useEffect(() => {
 		const ctx = ctxRef.current.getContext('2d');
 
-		const dates = currentExercise.history.map(historyEntry => {
+		const datesReverse = currentExercise.history.map(historyEntry => {
 			const date = new Date(historyEntry.date).toLocaleDateString();
 			return date;
 		})
 
-		const weights = currentExercise.history.map(historyEntry => {
+		const weightsReverse = currentExercise.history.map(historyEntry => {
 			const { weight } = historyEntry;
 			return weight;
 		})
+
+		const dates = datesReverse.reverse();
+		const weights = weightsReverse.reverse();
+		const options = {
+			backgroundColor: 'rgba(0, 0, 0, 1)'
+		}
 
 		if (typeof currentChart !== "undefined") currentChart.destroy();
 
@@ -51,7 +57,7 @@ const ExerciseChart = ({ exercises }) => {
 					}
 				]
 			},
-			options: {}
+			options
 		});
 
 		setCurrentChart(chart);
@@ -60,12 +66,12 @@ const ExerciseChart = ({ exercises }) => {
 
 	return exercises ? (
 		<Fragment>
-			<div className="form-group-category justify-center mt-4">
+			<div className="form-group-category justify-center mt-4 exercise-select">
 				<FormControl required className="flex-grow" variant="outlined">
 					<InputLabel ref={inputLabel} className="" htmlFor="current-exercise">Exercise:</InputLabel>
 					<Select
 						native
-						className="exercise-select"
+						className=""
 						value={selectedIndex}
 						labelWidth={labelWidth}
 						onChange={(e) => onChange(e)}
@@ -74,14 +80,13 @@ const ExerciseChart = ({ exercises }) => {
 							id: 'current-exercise'
 						}}
 					>
-						<option value="" />
 						{exercises.map((exercise, index) => (
 							<option key={exercise.name} value={index}>{exercise.name}</option>
 						))}
 					</Select>
 				</FormControl>
 			</div>
-			<canvas ref={ctxRef} id="line-chart" width="375" height="450"></canvas>
+			<canvas ref={ctxRef} id="line-chart" width={window.innerWidth} height={window.innerHeight - 220}></canvas>
 		</Fragment>
 	) : (
 			<Spinner />
