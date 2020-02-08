@@ -3,6 +3,7 @@ const { check, validationResult } = require('express-validator');
 const auth = require('../../middleware/auth');
 const Exercise = require('../../models/Exercise');
 const Workout = require('../../models/Workout');
+const linkNameTransform = require('../../utility/linkNameTransform');
 
 const router = express.Router();
 
@@ -51,7 +52,7 @@ router.post('/', auth, [
 
 		const { name, exercises, notes } = req.body;
 
-		const linkName = name.toLowerCase().replace(/\s/g, '-').replace(/,/g, '').replace(/åä/g, 'a').replace(/ö/g, 'o');
+		const linkName = linkNameTransform(name);
 
 		try {
 			const workoutExists = await Workout.findOne({ userId: req.user.id, name });
@@ -82,6 +83,7 @@ router.put('/:workoutId', auth, [
 ],
 	async (req, res) => {
 		// @TODO Implement this!
+		return res.status(501).send("Feature not implemented yet.");
 	}
 )
 

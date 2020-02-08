@@ -3,6 +3,7 @@ const { check, validationResult } = require('express-validator');
 const auth = require('../../middleware/auth');
 const Exercise = require('../../models/Exercise');
 const Category = require('../../models/Category');
+const linkNameTransform = require('../../utility/linkNameTransform');
 
 const router = express.Router();
 
@@ -61,7 +62,7 @@ router.post('/', auth, [
 			notes
 		} = req.body;
 
-		const linkName = name.toLowerCase().replace(/\s/g, '-');
+		const linkName = linkNameTransform(name);
 
 		const exerciseFields = {
 			userId: req.user.id,
@@ -210,7 +211,7 @@ router.post('/categories', auth, [
 
 		const { name } = req.body;
 
-		const linkName = name.toLowerCase().replace(/\s/g, '-');
+		const linkName = linkNameTransform(name);
 
 		try {
 			const categoryExists = await Category.findOne({ userId: req.user.id, name });
