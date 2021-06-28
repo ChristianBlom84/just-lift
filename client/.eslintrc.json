@@ -4,9 +4,10 @@
         "plugin:react/recommended",
         "plugin:prettier/recommended",
         "plugin:react-hooks/recommended",
-        "plugin:jsx-a11y/recommended"
+        "plugin:jsx-a11y/recommended",
+        "plugin:import/recommended"
     ],
-    "plugins": ["react", "prettier"],
+    "plugins": ["react", "prettier", "import"],
     "env": {
         "browser": true,
         "jasmine": true,
@@ -15,7 +16,7 @@
     },
     "rules": {
         "prettier/prettier": [
-            "error",
+            "warn",
             {
                 "singleQuote": true,
                 "tabWidth": 2
@@ -28,6 +29,5 @@
             "pragma": "React",
             "version": "detect"
         }
-    },
-    "parser": "@babel/eslint-parser"
+    }
 }
