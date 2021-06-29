@@ -3,7 +3,12 @@ const { check, validationResult } = require('express-validator');
 const auth = require('../../middleware/auth');
 const Exercise = require('../../models/Exercise');
 const Category = require('../../models/Category');
-const linkNameTransform = require('../../utility/linkNameTransform');
+// const linkNameTransform = require('../../utility/linkNameTransform');
+
+function linkNameTransform(name) {
+	const linkName = name.toLowerCase().replace(/\s/g, '-').replace(/,/g, '').replace(/åäÅÄ/g, 'a').replace(/öÖ/g, 'o');
+	return linkName;
+}
 
 const router = express.Router();
 
@@ -211,7 +216,9 @@ router.post('/categories', auth, [
 
 		const { name } = req.body;
 
-		const linkName = linkNameTransform(name);
+    console.log('Name: ', name);
+
+		const linkName = await linkNameTransform(name);
 
 		try {
 			const categoryExists = await Category.findOne({ userId: req.user.id, name });

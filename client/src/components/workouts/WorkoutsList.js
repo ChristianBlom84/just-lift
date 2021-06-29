@@ -36,7 +36,6 @@ function WorkoutsList({ workouts, loading }) {
 }
 
 WorkoutsList.propTypes = {
-  match: PropTypes.object.isRequired,
   workouts: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired
 };
