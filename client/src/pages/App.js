@@ -35,46 +35,90 @@ import AdminRoute from '../components/routing/AdminRoute';
 import AdminPanel from './admin/AdminPanel';
 
 if (localStorage.token) {
-	setAuthToken(localStorage.token);
+  setAuthToken(localStorage.token);
 }
 
 function App() {
-	useEffect(() => {
-		store.dispatch(loadUser());
-	}, []);
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, []);
 
-	return (
-		<Provider store={store}>
-			<Router>
-				<Fragment>
-					<Header />
-					<Alert />
-					<Switch>
-						<Route exact path='/' component={Landing} />
-						<Route exact path='/login' component={Login} />
-						<Route exact path='/register' component={Register} />
-						<PrivateRoute exact path='/dashboard' component={Dashboard} />
-						<PrivateRoute exact path='/workouts' component={Workouts} />
-						<PrivateRoute exact path='/workouts/create' component={CreateWorkout} />
-						<PrivateRoute exact path='/workouts/todays-workout' component={TodaysWorkout} />
-						<PrivateRoute exact path='/workouts/:workoutName' component={Workout} />
-						<PrivateRoute exact path='/exercises' component={Exercises} />
-						<PrivateRoute exact path='/exercises/create' component={CreateExercise} />
-						<PrivateRoute exact path='/exercises/edit' component={EditExercise} />
-						<PrivateRoute exact path='/exercises/:category' component={Category} />
-						<PrivateRoute exact path='/exercises/:category/:exerciseName' component={Exercise} />
-						<PrivateRoute exact path='/history' component={History} />
-						<PrivateRoute exact path='/history/workouts' component={WorkoutHistory} />
-						<PrivateRoute exact path='/history/workouts/:workoutName' component={SingleWorkoutHistory} />
-						<PrivateRoute exact path='/history/workouts/:workoutName/:workoutEntryId' component={SingleWorkoutHistoryEntry} />
-						<PrivateRoute exact path='/history/exercises' component={ExerciseHistory} />
-						<AdminRoute exact path='/admin' component={AdminPanel} />
-					</Switch>
-					<TabBar />
-				</Fragment>
-			</Router>
-		</Provider>
-	);
+  return (
+    <Provider store={store}>
+      <Router>
+        <Fragment>
+          <Header />
+          <Alert />
+          <Switch>
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/register" component={Register} />
+            <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            <PrivateRoute exact path="/workouts" component={Workouts} />
+            <PrivateRoute
+              exact
+              path="/workouts/create"
+              component={CreateWorkout}
+            />
+            <PrivateRoute
+              exact
+              path="/workouts/todays-workout"
+              component={TodaysWorkout}
+            />
+            <PrivateRoute
+              exact
+              path="/workouts/:workoutName"
+              component={Workout}
+            />
+            <PrivateRoute exact path="/exercises" component={Exercises} />
+            <PrivateRoute
+              exact
+              path="/exercises/create"
+              component={CreateExercise}
+            />
+            <PrivateRoute
+              exact
+              path="/exercises/edit"
+              component={EditExercise}
+            />
+            <PrivateRoute
+              exact
+              path="/exercises/:category"
+              component={Category}
+            />
+            <PrivateRoute
+              exact
+              path="/exercises/:category/:exerciseName"
+              component={Exercise}
+            />
+            <PrivateRoute exact path="/history" component={History} />
+            <PrivateRoute
+              exact
+              path="/history/workouts"
+              component={WorkoutHistory}
+            />
+            <PrivateRoute
+              exact
+              path="/history/workouts/:workoutName"
+              component={SingleWorkoutHistory}
+            />
+            <PrivateRoute
+              exact
+              path="/history/workouts/:workoutName/:workoutEntryId"
+              component={SingleWorkoutHistoryEntry}
+            />
+            <PrivateRoute
+              exact
+              path="/history/exercises"
+              component={ExerciseHistory}
+            />
+            <AdminRoute exact path="/admin" component={AdminPanel} />
+          </Switch>
+          <TabBar />
+        </Fragment>
+      </Router>
+    </Provider>
+  );
 }
 
 export default App;
