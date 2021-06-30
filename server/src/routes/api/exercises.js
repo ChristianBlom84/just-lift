@@ -3,12 +3,7 @@ const { check, validationResult } = require('express-validator');
 const auth = require('../../middleware/auth');
 const Exercise = require('../../models/Exercise');
 const Category = require('../../models/Category');
-// const linkNameTransform = require('../../utility/linkNameTransform');
-
-function linkNameTransform(name) {
-	const linkName = name.toLowerCase().replace(/\s/g, '-').replace(/,/g, '').replace(/åäÅÄ/g, 'a').replace(/öÖ/g, 'o');
-	return linkName;
-}
+const linkNameTransform = require('../../utility/linkNameTransform');
 
 const router = express.Router();
 
