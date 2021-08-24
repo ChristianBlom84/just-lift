@@ -61,7 +61,7 @@ const ExerciseChart = ({ exercises }) => {
     });
 
     setCurrentChart(chart);
-  }, []);
+  }, [currentExercise]);
 
   return exercises ? (
     <Fragment>
